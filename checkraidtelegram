@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Created by Sebastian Grewe, Jammicron Technology
+# Updated by Tribo Tecno
+# Para funcionar insira no seu crontab (crontab -e) a chamada do script
+# # 30 * * * * /root/checkraidtelegram # faço check a cada 30 minutos
+# Altere as linhas abaixo para a configuração do seu bot Telegram
+CHATID=9999999 
+BOTID=bot9999999:AA99939393487x96ssdja4u3Vl5pc 
+# Get count of raid arrays
+RAID_DEVICES=`grep ^md -c /proc/mdstat`
+
+# Get count of degraded arrays
+RAID_STATUS=`grep "\[.*_.*\]" /proc/mdstat -c`
+
+# Is an array currently recovering, get percentage of recovery
+RAID_RECOVER=`grep recovery /proc/mdstat | awk '{print $4}'`
+
+#Insere mensagem padrao Altere para a que desejar
+msg1="Teste do RAID1 da TRIBO com problema"
+
+# Check raid status
+# RAID recovers --> Warning
+if [[ $RAID_RECOVER ]]; then
+        STATUS="WARNING - Checked $RAID_DEVICES arrays, recovering : $RAID_RECOVER"
+        /usr/bin/curl -X POST --data chat_id="$CHATID" --data parse_mode="markdown" --data text="$STATUS" https://api.telegram.org/$BOTID/sendMessage
+        EXIT=1
+# RAID ok
+elif [[ $RAID_STATUS  == "0" ]]; then
+        STATUS="OK - Checked $RAID_DEVICES arrays."
+        EXIT=0
+# All else critical, better save than sorry
+else
+        STATUS="CRITICAL - Checked $RAID_DEVICES arrays, $RAID_STATUS have FAILED"
+        /usr/bin/curl -X POST --data chat_id="$CHATID" --data parse_mode="markdown" --data text="$STATUS" https://api.telegram.org/$BOTID/sendMessage
+        EXIT=2
+fi
+
+# Status and quit
+echo $STATUS
+exit $EXIT
