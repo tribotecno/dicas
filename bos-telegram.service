@@ -1,0 +1,21 @@
+#Systemd unit for Bos-Telegram Bot
+#/etc/systemd/system/bos-telegram.service
+#Substitua as variaveis iniciadas com $ com suas informações 
+[Unit]
+Description=bos-telegram
+Wants=lnd.service
+After=lnd.service
+
+
+[Service]
+ExecStart=/home/$nauru/.npm-global/bin/bos telegram --use-small-units --connect $999999731
+User=$nauru
+Restart=always
+TimeoutSec=120
+RestartSec=30
+StandardOutput=null
+StandardError=journal
+Environment=BOS_DEFAULT_LND_PATH=/home/$nauru/umbrel/app-data/lightning/data/lnd
+
+[Install]
+WantedBy=multi-user.target
