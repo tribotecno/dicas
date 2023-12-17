@@ -1,6 +1,7 @@
 #Systemd unit for Bos-Telegram Bot
 #/etc/systemd/system/bos-telegram.service
-#Substitua as variaveis iniciadas com $ com suas informações 
+#Substitua as variaveis iniciadas com $ com suas informações
+#Não esquece de apagar o $
 [Unit]
 Description=bos-telegram
 Wants=lnd.service
