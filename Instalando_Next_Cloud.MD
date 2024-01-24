@@ -1,4 +1,5 @@
 Passos para Instalação do NextCloud no Ubuntu 22.04
+
 1 - Instalar os pacotes da requeridos
 ```
 sudo apt update && sudo apt upgrade
