@@ -55,7 +55,9 @@ sudo cp -r nextcloud /var/www
 sudo chown -R www-data:www-data /var/www/nextcloud
 ```
 11 - Configuração do Apache (https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#apache-configuration-label)
+
 12 - Configuração do PHP (https://docs.nextcloud.com/server/latest/admin_manual/installation/php_configuration.html)
+
 13 - Edite o arquivo no nextcloud.conf e coloque as informações abaixo (pode alterar de acordo com a localização da pasta do NextCloud):
 ```
 sudo nano /etc/apache2/sites-available/nextcloud.conf
