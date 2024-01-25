@@ -92,28 +92,28 @@ Altere o nome do servidor para corresponder ao seu
 ```
 14 - Ative a configuração com o comando abaixo
 ```
-a2ensite nextcloud.conf
+sudo a2ensite nextcloud.conf
 ```
 15 - Ative o modulo de rewrite
 ```
-a2enmod rewrite
+sudo a2enmod rewrite
 ```
 16 - Os módulos abaixo também devem ser ativados
 ```
-a2enmod headers
-a2enmod env
-a2enmod dir
-a2enmod mime
+sudo a2enmod headers
+sudo a2enmod env
+sudo a2enmod dir
+sudo a2enmod mime
 ```
 17 - Restart o serviço do Apache
 ```
-systemclt restart apache2
+sudo systemctl restart apache2
 ```
 18 - Caso deseje pode ativar o SSL com os comandos abaixo
 ```
-a2enmod ssl
-a2ensite default-ssl
-service apache2 reload
+sudo a2enmod ssl
+sudo a2ensite default-ssl
+sudo service apache2 reload
 ```
 19 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/
 
