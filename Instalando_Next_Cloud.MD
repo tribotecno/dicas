@@ -119,9 +119,30 @@ sudo a2enmod ssl
 sudo a2ensite default-ssl
 sudo service apache2 reload
 ```
+20 - Adicione as linhas abaixo no nextcloud.conf para escutar a porta ssl pelo nextcloud
+```
+sudo nano /etc/apache2/sites-available/nextcloud.conf
+```
+Altere o nome do servidor para corresponder ao seu
+```
+<VirtualHost *:443>
+  DocumentRoot /var/www/nextcloud/
+  ServerName  your.server.com
+
+  <Directory /var/www/nextcloud/>
+    Require all granted
+    AllowOverride All
+    Options FollowSymLinks MultiViews
+
+    <IfModule mod_dav.c>
+      Dav off
+    </IfModule>
+  </Directory>
+</VirtualHost>
+```
 Faça o teste usando o https
 ```
 https://nextcloud.tribotecno.org
 ```
-20 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/
+21 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/ Faremos um tutorial sobre isso
 
