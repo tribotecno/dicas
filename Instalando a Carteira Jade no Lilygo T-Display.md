@@ -1,6 +1,6 @@
 # Instalando a Carteira Jade no Lilygo T-Display #
 Recomendamos usar esse tutorial com o vídeo https://youtu.be/NfLLxGz-uGo
-Passos para instalação
+
 0 - Verificar as dependencias em:
 https://github.com/Blockstream/Jade
 
