@@ -77,7 +77,7 @@ Altere o nome do servidor para corresponder ao seu
 ```
 <VirtualHost *:80>
   DocumentRoot /var/www/nextcloud/
-  ServerName  your.server.com
+  **ServerName  your.server.com**
 
   <Directory /var/www/nextcloud/>
     Require all granted
@@ -127,7 +127,7 @@ Altere o nome do servidor para corresponder ao seu
 ```
 <VirtualHost *:443>
   DocumentRoot /var/www/nextcloud/
-  ServerName  your.server.com
+  **ServerName  your.server.com**
 
   <Directory /var/www/nextcloud/>
     Require all granted
