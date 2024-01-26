@@ -15,13 +15,15 @@ https://github.com/espressif/idf-installer/releases/tag/offline-5.1.2
 
 4 - Clonar o software da Jade no Windows dentro da pasta do IDE para ESP32
 Abra o prompt de comando que se encontra no desktop
+```
 git clone --recursive https://github.com/Blockstream/Jade.git
-
+```
 5 - Vá para pasta "Jade"
 
 6 - Com Explorer copie da pasta config o arquivo sdkconfig_display_ttgo_tdisplay.defaults e coloque na pasta Jade. Renomeie o arquivo para sdkconfig.defaults
 
 7 - Com placa T-Display plugada no computador realize a instalação do programa
+```
 idf.py flash monitor
-
+```
 8 - Após o termino o dispositivo reinicia ficando pronto para ser configurado
