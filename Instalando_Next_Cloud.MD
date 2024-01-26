@@ -109,11 +109,15 @@ sudo a2enmod mime
 ```
 sudo systemctl restart apache2
 ```
-18 - Caso deseje pode ativar o SSL com os comandos abaixo
+18 - Continue a configuração pelo navegador acessando ao servidor diretament
+```
+https://nexcloud.tribotecno.org
+```
+19 - Caso deseje pode ativar o SSL com os comandos abaixo
 ```
 sudo a2enmod ssl
 sudo a2ensite default-ssl
 sudo service apache2 reload
 ```
-19 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/
+20 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/
 
