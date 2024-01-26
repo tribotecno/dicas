@@ -1,4 +1,6 @@
-#Passos para a montagem do armazenamento caseiro#
+#
+Passos para a montagem do armazenamento caseiro
+#
 
 0 - Recomendamos que use esse tutorial juntamente com o vídeo  https://youtu.be/kOqfm-3t1S8 
 
