@@ -111,7 +111,7 @@ sudo systemctl restart apache2
 ```
 18 - Continue a configuração pelo navegador acessando ao servidor diretament
 ```
-http://nexcloud.tribotecno.org
+http://nextcloud.tribotecno.org
 ```
 19 - Caso deseje pode ativar o SSL com os comandos abaixo
 ```
@@ -121,7 +121,7 @@ sudo service apache2 reload
 ```
 Faça o teste usando o https
 ```
-https://nexcloud.tribotecno.org
+https://nextcloud.tribotecno.org
 ```
 20 - O certificado SSL é auto assinado. Recomenda-se para internet usar a https://letsencrypt.org/
 
