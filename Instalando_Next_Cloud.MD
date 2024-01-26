@@ -73,7 +73,7 @@ Alias /nextcloud "/var/www/nextcloud/"
   </IfModule>
 </Directory>
 ```
-Altere o nome do servidor para corresponder ao seu em  **ServerName**
+
 ```
 <VirtualHost *:80>
   DocumentRoot /var/www/nextcloud/
@@ -109,7 +109,7 @@ sudo a2enmod mime
 ```
 sudo systemctl restart apache2
 ```
-18 - Continue a configuração pelo navegador acessando ao servidor diretament
+18 - Continue a configuração pelo navegador acessando ao servidor diretamente
 ```
 http://nextcloud.tribotecno.org
 ```
@@ -119,11 +119,11 @@ sudo a2enmod ssl
 sudo a2ensite default-ssl
 sudo service apache2 reload
 ```
-20 - Adicione as linhas abaixo no nextcloud.conf para escutar a porta ssl pelo nextcloud
+20 - Adicione as linhas abaixo no nextcloud.conf para escutar a porta ssl (443) pelo nextcloud
 ```
 sudo nano /etc/apache2/sites-available/nextcloud.conf
 ```
-Altere o nome do servidor para corresponder ao seu em **ServerName**
+
 ```
 <VirtualHost *:443>
   DocumentRoot /var/www/nextcloud/
