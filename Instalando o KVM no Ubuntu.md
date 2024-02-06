@@ -1,5 +1,5 @@
 # Passos para instalação
-
+Acompanhe com o video https://youtu.be/B2Npu7-OKGY
 1 - Testar se o suporte da virtualização está ativado
 ```
 grep -e vmx -e svm /proc/cpuinfo
