@@ -18,7 +18,7 @@ sudo wipefs -a /dev/sda # Para cada disco repita o comando variando a letra sda 
 ```
 ls -la /dev/disk/by-id/ |grep ata
 ```
-5 - Comando para montar o volume ZFS. Modifique ao seu gosto
+5 - Comando para montar o volume ZFS. Modifique ao que representa sua configuração
 ```
 zpool create -O mountpoint=/mnt/datavol datavol raidz2 ata-Fanxiang_S101_2TB_MX_00000000000010082 ata-Fanxiang_S101_2TB_MX_00000000000030082 ata-Netac_SSD_2TB_AA202211172TB6843669 ata-Netac_SSD_2TB_AA202310132T02111230 ata-SSD_2TB_AA000000000000000794 -f
 ```
