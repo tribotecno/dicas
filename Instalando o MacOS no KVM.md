@@ -1,4 +1,4 @@
-* Instalando o MacOS no KVM
+# Instalando o MacOS no KVM
 
 Essa instalação irá seguir os passos do https://github.com/kholia/OSX-KVM
 
@@ -72,7 +72,6 @@ virsh --connect qemu:///system define macOS.xml
 sudo setfacl -m u:libvirt-qemu:rx /home/$USER
 sudo setfacl -R -m u:libvirt-qemu:rx /home/$USER/OSX-KVM
 ```
-
 12 - Caso tenha problemas em instalar os aplicativos da loja da apple, ajustar a parte da rede para ser en0 na VM para isso:
 12.1 - Delete toda a configuração na configuração de sistemas na parte de redes
 12.2 - Abra um terminal no MacOS e remova o arquivo de interfaces com o comando:
@@ -83,3 +82,4 @@ sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
 ```
 ifconfig -a # deve aparecer en0 com o endereço IP correto
 ```
+13 - Com o virt-manager no primeiro boot deve ser modificado o volume do boot como explicado no video
