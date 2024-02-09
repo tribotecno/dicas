@@ -19,6 +19,7 @@ Uma CPU com suporte Intel VT-x / AMD SVM é requerida. Teste seu hospedeiro com 
 grep -e vmx -e svm /proc/cpuinfo
 ```
 Uma CPU com suporte SSE4.1 se for usar >= macOS Sierra
+
 Uma CPU com suporte AVX2 se for usar   >= macOS Mojave
 
 2 - Instalar os pacotes necessários
@@ -41,6 +42,14 @@ git pull --rebase
 ```
 sudo cp kvm.conf /etc/modprobe.d/kvm.conf  # for intel boxes only
 sudo cp kvm_amd.conf /etc/modprobe.d/kvm.conf  # for amd boxes only
+```
+Após essa cópia realize um reboot no hospedeiro e retorne a pasta para continuar a instalação:
+```
+sudo reboot
+```
+Após o retorno do hospedeiro:
+```
+cd OSX-KVM
 ```
 6 - Buscar o Instalador do MacOS
 ```
