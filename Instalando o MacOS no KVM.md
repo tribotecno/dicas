@@ -22,6 +22,14 @@ Uma CPU com suporte SSE4.1 se for usar >= macOS Sierra
 
 Uma CPU com suporte AVX2 se for usar   >= macOS Mojave
 
+No vídeo usamos o aplicativo hardinfo:
+```
+sudo apt install hardinfo
+```
+```
+hardinfo
+```
+
 2 - Instalar os pacotes necessários
 ```
 sudo apt-get install qemu uml-utilities virt-manager git \
