@@ -51,6 +51,12 @@ git pull --rebase
 sudo cp kvm.conf /etc/modprobe.d/kvm.conf  # for intel boxes only
 sudo cp kvm_amd.conf /etc/modprobe.d/kvm.conf  # for amd boxes only
 ```
+Adicionar o seu usuários aos grupos do KVM:
+```
+sudo usermod -aG kvm $(whoami)
+sudo usermod -aG libvirt $(whoami)
+sudo usermod -aG input $(whoami)
+```
 Após essa cópia realize um reboot no hospedeiro e retorne a pasta para continuar a instalação:
 ```
 sudo reboot
@@ -63,6 +69,23 @@ cd OSX-KVM
 ```
 ./fetch-macOS-v2.py
 ```
+Ele irá dar as opções abaixo. Sugerimos o Ventura como recomendado:
+```
+$ ./fetch-macOS-v2.py
+1. High Sierra (10.13)
+2. Mojave (10.14)
+3. Catalina (10.15)
+4. Big Sur (11.7)
+5. Monterey (12.6)
+6. Ventura (13) - RECOMMENDED
+7. Sonoma (14)
+
+Choose a product to download (1-6): 6
+```
+Converter o arquivo baixado BaseSystem.dmg para BaseSystem.img:
+```
+dmg2img -i BaseSystem.dmg BaseSystem.img
+```
 7 - Editar o arquivo OpenCore para a config desejada. Verifique no vídeo para mais detalhes.
 ```
 cp OpenCore-Boot.sh OpenCore-Boot.sh.orig
@@ -70,9 +93,11 @@ cp OpenCore-Boot.sh OpenCore-Boot.sh.orig
 ```
 nano OpenCore-Boot.sh
 ```
+**Observe os comentários no vídeo sobre as principais alterações no arquivo, porém ele é auto-explicativo para outras mudanças**
+  
 8 - Criar o disco onde será instalado o MacOS
 ```
-sudo qemu-img create -f qcow2 mac_hdd_ng.img 128G
+qemu-img create -f qcow2 mac_hdd_ng.img 128G
 ```
 9 - Começar a instalação executando o comando abaixo:
 ```
