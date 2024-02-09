@@ -72,7 +72,7 @@ nano OpenCore-Boot.sh
 ```
 8 - Criar o disco onde será instalado o MacOS
 ```
-sudo qemu-img create -f qcow2 /var/lib/libvirt/images/mac_hdd_ng.img 128G
+sudo qemu-img create -f qcow2 mac_hdd_ng.img 128G
 ```
 9 - Começar a instalação executando o comando abaixo:
 ```
