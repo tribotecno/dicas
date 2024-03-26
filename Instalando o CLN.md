@@ -242,18 +242,22 @@ sudo apt install tor
 sudo systemctl status tor
 ```
 Saída do comando: 
-> [sudo] password for nauru: 
+> [sudo] password for nauru:
+> 
+> tor.service - Anonymizing overlay network for TCP (multi-instance-master)
 >
->● tor.service - Anonymizing overlay network for TCP (multi-instance-master)
+>  Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)
 >
->     Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)
->
->     Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago
->    Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
->   Main PID: 819 (code=exited, status=0/SUCCESS)
->        CPU: 870us
+>  Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago
+> 
+>  Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+> 
+>  Main PID: 819 (code=exited, status=0/SUCCESS)
+> 
+>  CPU: 870us
 >
 >Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
+> 
 >Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
 
 22 - Adicione seu nome de usuário ao grupo do tor
