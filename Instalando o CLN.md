@@ -242,7 +242,7 @@ sudo apt install tor
 sudo systemctl status tor
 ```
 Saída do comando: 
->* [sudo] password for nauru:
+> [sudo] password for nauru:
 > 
 > tor.service - Anonymizing overlay network for TCP (multi-instance-master)
 >
@@ -258,7 +258,7 @@ Saída do comando:
 >
 >Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
 > 
->Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).*
+>Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
 
 22 - Adicione seu nome de usuário ao grupo do tor
 ```
@@ -268,7 +268,7 @@ sudo usermod -a -G debian-tor nauru # no caso retire o 'nauru' e coloque seu nom
 ```
 sudo nano /etc/tor/torrc
 ```
-24 - Retire o # das seguintes linhas ou descomente
+24 - Retire o # das seguintes linhas ou descomente:
 ```
 ControlPort 9051
 CookieAuthentication 1
@@ -439,7 +439,7 @@ lightning-cli getinfo
 >      "invoice": "02000002024100"
 >   }
    
-Como proteger a Seed do Node
+## Como proteger a Seed do Node
 
 33 - A seed está localizada na pasta
 ```
@@ -453,7 +453,7 @@ xxd hsm_secret
 ```
  cat > hsm_secret.bak <<END
 ```
-Copie e cole as linhas do comando de 2
+Copie e cole as linhas do comando
 
 36 - Para restaurar
 ```
@@ -480,129 +480,189 @@ Copie e cole as linhas do comando de 2
 lightning-hsmtool  encrypt hsm_secret 
 ```
 42 - Para o node poder iniciar a seguinte linha deve ser acrescentada no arquivo config do node
- --encrypted-hsm
-
+```
+encrypted-hsm
+```
 43 - Quando iniciar o node ele abrirá o prompt para entrada da senha e prosseguir com a inicialização
 
 Instalando RTL no CLN
 
-44 - Instalar o C-Lightning-REST
-
-PGP Key:  https://keybase.io/suheb
-Download the release and signature:
+44 - Instalar o C-Lightning-REST, baixando o release e assinatura:
+```
 wget https://github.com/Ride-The-Lightning/c-lightning-REST/archive/refs/tags/v0.10.7.tar.gz
 wget https://github.com/Ride-The-Lightning/c-lightning-REST/releases/download/v0.10.7/v0.10.7.tar.gz.asc
-Verify the release:
-gpg --verify v0.10.7.tar.gz.asc v0.10.7.tar.gz
-
-machado@terenanode:~$ gpg --verify v0.10.7.tar.gz.asc v0.10.7.tar.gz
-gpg: Signature made Sat Oct  7 21:05:39 2023 UTC
-gpg:                using RSA key 3E9BD4436C288039CA827A9200C9E2BC2E45666F
-gpg: Good signature from "saubyk (added uid) <39208279+saubyk@users.noreply.github.com>" [unknown]
-gpg:                 aka "Suheb <39208279+saubyk@users.noreply.github.com>" [unknown]
-gpg: WARNING: This key is not certified with a trusted signature!
-gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 3E9B D443 6C28 8039 CA82  7A92 00C9 E2BC 2E45 666F
-
-2 - Comandos
-
-467  wget https://github.com/Ride-The-Lightning/c-lightning-REST/archive/refs/tags/v0.10.7.tar.gz
-  468  ls
-  469  wget https://github.com/Ride-The-Lightning/c-lightning-REST/releases/download/v0.10.7/v0.10.7.tar.gz.asc
-  470  gpg --verify v0.10.7.tar.gz.asc v0.10.7.tar.gz
-  471  sudo su -
-  472  sudo apt-get update
-  473  sudo apt-get install -y ca-certificates curl gnupg
-  474  sudo mkdir -p /etc/apt/keyrings
-  475  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-  476  NODE_MAJOR=20
-  477  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-  478  sudo apt-get update
-  479  sudo apt-get install nodejs -y
-  480  mkdir ~/.npm-global
-  481  npm config set prefix '~/.npm-global'
-  482  nano .profile 
-
+```
+45 - Para configurar o GPG para o check, execute os comandos abaixo:
+```
+sudo apt-get update
+```
+```
+sudo apt-get install -y ca-certificates curl gnupg
+```
+```
+sudo mkdir -p /etc/apt/keyrings
+```
+```
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+```
+```
+NODE_MAJOR=20
+```
+```
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+```
+```
+sudo apt-get update
+```
+```
+sudo apt-get install nodejs -y
+```
+```
+mkdir ~/.npm-global
+```
+```
+npm config set prefix '~/.npm-global'
+```
+```
+nano .profile 
+```
+Inclua a linha no final do arquivo:
+```
 export PATH="$HOME/.npm-global/bin:$PATH" ### Append to ~/.profile
+```
+```
+source ~/.profile
+```
+```
+curl https://keybase.io/suheb/pgp_keys.asc | gpg --import
+```
+46 - Verificando a assinaturas:
+```
+gpg --verify v0.10.7.tar.gz.asc v0.10.7.tar.gz
+```
+Saida do comando: 
+>gpg: Signature made Sat Oct  7 21:05:39 2023 UTC
+>gpg:                using RSA key 3E9BD4436C288039CA827A9200C9E2BC2E45666F
+>gpg: Good signature from "saubyk (added uid) <39208279+saubyk@users.noreply.github.com>" [unknown]
+>gpg:                 aka "Suheb <39208279+saubyk@users.noreply.github.com>" [unknown]
+>gpg: WARNING: This key is not certified with a trusted signature!
+>gpg:          There is no indication that the signature belongs to the owner.
+>Primary key fingerprint: 3E9B D443 6C28 8039 CA82  7A92 00C9 E2BC 2E45 666F
 
-  483  source ~/.profile
-  484  curl https://keybase.io/suheb/pgp_keys.asc | gpg --import
-  485  gpg --verify v0.10.7.tar.gz.asc v0.10.7.tar.gz
-  486  ls
-  487  tar -xzf v0.10.7.tar.gz 
-  488  ls
-  489  cd c-lightning-REST-0.10.7/
-  490  cp sample-cl-rest-config.json cl-rest-config.json 
-  491  cat cl-rest-config.json 
-  492  npm install
-  493  node cl-rest.js
+47 - Descompactando o arquivo
+```
+tar -xzf v0.10.7.tar.gz 
+```
+48 - Entre na pasta descompactada:
+```
+cd c-lightning-REST-0.10.7/
+```
+49 - Copie o arquivo exemplo para o original:
+```
+cp sample-cl-rest-config.json cl-rest-config.json 
+```
+50 - Verifique se está tudo correto:
+```
+cat cl-rest-config.json 
+51 - Realize a instalação dos pacotes npm
+```
+npm install
+```
+52 - Execute o serviço:
+```
+node cl-rest.js
+```
+53 - Testar para ver se está rodando corretamente:
+```
+lsof -i -P -n | grep LISTEN
+```
+A saída deve ter as portas 3001 e 4001 presentes:
 
-Testar para ver se está rodando
+> bitcoind   2023 nauru   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)
+>
+> bitcoind   2023 nauru   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)
+>
+> bitcoind   2023 nauru   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)
+> 
+> bitcoind   2023 nauru   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)
+> 
+> bitcoind   2023 nauru   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)
+>
+> lightning  4305 nauru    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)
+>
+> node      22089 nauru   28u  IPv6 171408      0t0  TCP *:3001 (LISTEN)
+>
+> node      22089 nauru   29u  IPv6 171409      0t0  TCP *:4001 (LISTEN)
 
-machado@terenanode:~$ lsof -i -P -n | grep LISTEN
-bitcoind   2023 machado   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)
-bitcoind   2023 machado   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)
-bitcoind   2023 machado   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)
-bitcoind   2023 machado   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)
-bitcoind   2023 machado   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)
-lightning  4305 machado    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)
-node      22089 machado   28u  IPv6 171408      0t0  TCP *:3001 (LISTEN)
-node      22089 machado   29u  IPv6 171409      0t0  TCP *:4001 (LISTEN)
-
-
-467  cd c-lightning-REST-0.10.7/
-  468  ls
-  469  cd certs/
-
-machado@terenanode:~/c-lightning-REST-0.10.7/certs$ ls
-access.macaroon  certificate.pem  key.pem  rootKey.key
-
-Baixar o RTL
+54 - Baixar o RTL
+```
  wget https://github.com/Ride-The-Lightning/RTL/archive/refs/tags/v0.14.1.tar.gz
  wget https://github.com/Ride-The-Lightning/RTL/releases/download/v0.14.1/v0.14.1.tar.gz.asc
+```
+55 - Realizar a verificação do pacote
+```
+gpg --verify v0.14.1.tar.gz.asc v0.14.1.tar.gz
+```
+A saída deverá ser a abaixo:
+>gpg: Signature made Sat Oct  7 21:41:32 2023 UTC
+>gpg:                using RSA key 3E9BD4436C288039CA827A9200C9E2BC2E45666F
+>gpg: Good signature from "saubyk (added uid) <39208279+saubyk@users.noreply.github.com>" [unknown]
+>gpg:                 aka "Suheb <39208279+saubyk@users.noreply.github.com>" [unknown]
+>gpg: WARNING: This key is not certified with a trusted signature!
+>gpg:          There is no indication that the signature belongs to the owner.
+>Primary key fingerprint: 3E9B D443 6C28 8039 CA82  7A92 00C9 E2BC 2E45 666F
 
-Testar
-machado@terenanode:~$ gpg --verify v0.14.1.tar.gz.asc v0.14.1.tar.gz
-gpg: Signature made Sat Oct  7 21:41:32 2023 UTC
-gpg:                using RSA key 3E9BD4436C288039CA827A9200C9E2BC2E45666F
-gpg: Good signature from "saubyk (added uid) <39208279+saubyk@users.noreply.github.com>" [unknown]
-gpg:                 aka "Suheb <39208279+saubyk@users.noreply.github.com>" [unknown]
-gpg: WARNING: This key is not certified with a trusted signature!
-gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 3E9B D443 6C28 8039 CA82  7A92 00C9 E2BC 2E45 666F
-
-
-Descompactar
+56 - Descompactar o RTL:
+```
  tar -xzf v0.14.1.tar.gz
- cd RTL
- npm install --only-prod --legacy-peer-deps
+```
+57 - Ir para a pasta do aplicativo e instalar:
+```
+cd RTL
+npm install --only-prod --legacy-peer-deps
+```
 
-Configurar
- cp Sample-RTL-Config.json RTL-Config.json
+58 - Copiar o arquivo exemplo da configuração:
+```
+cp Sample-RTL-Config.json RTL-Config.json
+```
+
+59 - Verificar o conteúdo
+```
  nano RTL-Config.json
+```
 
-machado@terenanode:~/c-lightning-REST-0.10.7/certs$ cd
-machado@terenanode:~$ cd .lightning/
-machado@terenanode:~/.lightning$ mkdir rtl-backup
-machado@terenanode:~/.lightning$ cd rtl-backup/
-machado@terenanode:~/.lightning/rtl-backup$ pwd
-/home/machado/.lightning/rtl-backup
+60 - Criar as pastas para backup do RTL
+```
+cd
+cd .lightning/
+mkdir rtl-backup
+cd rtl-backup/
+pwd
+```
 
+61 - Execute o programa do RTL
+```
+cd ~/RTL-0.14.1
+node rtl
+```
+Haverá a saída abaixo:
+> INFO: RTL => Server is up and running, please open the UI at http://localhost:3000 or your proxy configured url.
 
-Para executar
-machado@terenanode:~/RTL-0.14.1$ node rtl
-[10/28/2023, 9:54:29 PM] INFO: RTL => Server is up and running, please open the UI at http://localhost:3000 or your proxy configured url.
-
-machado@terenanode:~/.lightning/rtl-backup$ lsof -i -P -n | grep LISTEN
-bitcoind   2023 machado   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)
-bitcoind   2023 machado   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)
-bitcoind   2023 machado   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)
-bitcoind   2023 machado   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)
-bitcoind   2023 machado   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)
-lightning  4305 machado    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)
-node      22244 machado   28u  IPv6 171462      0t0  TCP *:3001 (LISTEN)
-node      22244 machado   29u  IPv6 171463      0t0  TCP *:4001 (LISTEN)
-node      22900 machado   25u  IPv6 173507      0t0  TCP *:3000 (LISTEN)
+62 - Para verificar todos os serviços se estão rodando execute o comando:
+```
+lsof -i -P -n | grep LISTEN
+```
+A saída deverá ser: 
+> bitcoind   2023 nauru   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)
+> bitcoind   2023 nauru   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)
+> bitcoind   2023 nauru   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)
+> bitcoind   2023 nauru   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)
+> bitcoind   2023 nauru   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)
+> lightning  4305 nauru    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)
+> node      22244 nauru   28u  IPv6 171462      0t0  TCP *:3001 (LISTEN)
+> node      22244 nauru   29u  IPv6 171463      0t0  TCP *:4001 (LISTEN)
+> node      22900 nauru   25u  IPv6 173507      0t0  TCP *:3000 (LISTEN)
 
 Os plugins trazem mais funcionalidade para a administração do node
 
