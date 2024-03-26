@@ -242,7 +242,7 @@ sudo apt install tor
 sudo systemctl status tor
 ```
 Saída do comando: 
-> [sudo] password for nauru:
+>* [sudo] password for nauru:
 > 
 > tor.service - Anonymizing overlay network for TCP (multi-instance-master)
 >
@@ -258,7 +258,7 @@ Saída do comando:
 >
 >Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
 > 
->Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
+>Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).*
 
 22 - Adicione seu nome de usuário ao grupo do tor
 ```
