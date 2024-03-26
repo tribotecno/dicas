@@ -564,6 +564,7 @@ cp sample-cl-rest-config.json cl-rest-config.json
 50 - Verifique se está tudo correto:
 ```
 cat cl-rest-config.json 
+```
 51 - Realize a instalação dos pacotes npm
 ```
 npm install
