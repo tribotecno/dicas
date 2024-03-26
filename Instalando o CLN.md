@@ -115,71 +115,71 @@ lightningd
 lightning-cli getinfo
 ```
 A saída obtida será parecida com a abaixo:
-{
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
-   "alias": "T3R3N4ORG",
-   "color": "ffa500",
-   "num_peers": 0,
-   "num_pending_channels": 0,
-   "num_active_channels": 0,
-   "num_inactive_channels": 0,
-   "address": [],
-   "binding": [
-      {
-         "type": "ipv6",
-         "address": "::",
-         "port": 9735
-      },
-      {
-         "type": "ipv4",
-         "address": "0.0.0.0",
-         "port": 9735
-      }
-   ],
-   "version": "23.08.1",
-   "blockheight": 814139,
-   "network": "bitcoin",
-   "fees_collected_msat": 0,
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",
-   "our_features": {
-      "init": "08a0000a0a69a2",
-      "node": "88a0000a0a69a2",
-      "channel": "",
-      "invoice": "02000002024100"
-   }
-}
+>{
+>   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
+>   "alias": "T3R3N4ORG",
+>   "color": "ffa500",
+>   "num_peers": 0,
+>   "num_pending_channels": 0,
+>   "num_active_channels": 0,
+>   "num_inactive_channels": 0,
+>   "address": [],
+>   "binding": [],
+>  {
+>         "type": "ipv6",
+>         "address": "::",
+>         "port": 9735
+>      },
+>      {
+>         "type": "ipv4",
+>         "address": "0.0.0.0",
+>         "port": 9735
+>      }
+>   ],
+>   "version": "23.08.1",
+>   "blockheight": 814139,
+>   "network": "bitcoin",
+>   "fees_collected_msat": 0,
+>   "lightning-dir": "/home/nauru/.lightning/bitcoin",
+>   "our_features": {
+>      "init": "08a0000a0a69a2",
+>      "node": "88a0000a0a69a2",
+>      "channel": "",
+>      "invoice": "02000002024100"
+>   }
+>}
 
-14 - O CLN automaticamente configura a parte da rede para a CLEARNET. Para testar a conectividade vamos usar o node da KRAKEN para isso
+14 - O CLN automaticamente configura a parte da rede para a CLEARNET. Para testar a conectividade vamos usar o node da KRAKEN para isso:
 ```
 lightning-cli connect 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735
 ```
 A saída obtida será como a abaixo:
-{
-   "id": "02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69",
-   "features": "800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000888a52a1",
-   "direction": "out",
-   "address": {
-      "type": "ipv4",
-      "address": "52.13.118.208",
-      "port": 9735
-   }
-}
+>{
+>   "id": "02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69",
+>   "features": >"80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000888a52a1",
+>   "direction": "out",
+>   "address": {
+>      "type": "ipv4",
+>      "address": "52.13.118.208",
+>      "port": 9735
+>   }
+>}
 
 15 - Realize o teste de ping 
 ```
 lightning-cli ping 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69
 ```
 Resultado a ser obtido:
-{
-   "totlen": 132
-}
+>{
+>   "totlen": 132
+>}
 
 
 A seguir temos 3 opções de uso da rede do node: somente CLEARNET, somente TOR e modo híbrido usando a CLEARNET e TOR juntas.
 
 16 - Configuração da rede - Opção somente CLEARNET - coloque as linhas abaixo no arquivo ~/.lightning/config
 ```
-nano
+nano ~/.lightning/config
 ```
 ```
 ##
@@ -194,268 +194,295 @@ bind-addr=0.0.0.0:9735
 ```
 
 17 -  Faça o restart do node para aplicar a configuração com o comando
-nauru@terenanode:~$ lightning-cli stop && sleep 2 && lightningd
+```
+lightning-cli stop && sleep 2 && lightningd
+```
+18 - Verifique a configuração
+```
+lightning-cli getinfo
+```
+A saída do comando:
+>{
+>   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
+>   "alias": "T3R3N4ORG",
+>   "color": "ffa500",
+>   "num_peers": 0,
+>   "num_pending_channels": 0,
+>   "num_active_channels": 0,
+>   "num_inactive_channels": 0,
+>   "address": [],
+>   "binding": []
+>      {
+>         "type": "ipv4",
+>         "address": "0.0.0.0",
+>         "port": 9735
+>      }
+>   ],
+>   "version": "23.08.1",
+>   "blockheight": 814140,
+>   "network": "bitcoin",
+>   "fees_collected_msat": 0,
+>   "lightning-dir": "/home/nauru/.lightning/bitcoin",
+>   "our_features": {
+>      "init": "08a0000a0a69a2",
+>      "node": "88a0000a0a69a2",
+>      "channel": "",
+>      "invoice": "02000002024100"
+>   }
+>}
 
-12.2 - Verifique a configuração
+19 - Configuração da rede - Opção somente rede TOR - Necessita algumas configurações adicionais
 
-nauru@terenanode:~$ lightning-cli getinfo
-{
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
-   "alias": "T3R3N4ORG",
-   "color": "ffa500",
-   "num_peers": 0,
-   "num_pending_channels": 0,
-   "num_active_channels": 0,
-   "num_inactive_channels": 0,
-   "address": [],
-   "binding": [
-      {
-         "type": "ipv4",
-         "address": "0.0.0.0",
-         "port": 9735
-      }
-   ],
-   "version": "23.08.1",
-   "blockheight": 814140,
-   "network": "bitcoin",
-   "fees_collected_msat": 0,
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",
-   "our_features": {
-      "init": "08a0000a0a69a2",
-      "node": "88a0000a0a69a2",
-      "channel": "",
-      "invoice": "02000002024100"
-   }
-}
+20 - Instale o pacote do TOR
+```
+sudo apt install tor
+```
+21 -  Verifique se está rodando corretamente
+```
+sudo systemctl status tor
+```
+Saída do comando: 
+> [sudo] password for nauru: 
+>
+>● tor.service - Anonymizing overlay network for TCP (multi-instance-master)
+>
+>     Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)
+>
+>     Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago
+>    Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+>   Main PID: 819 (code=exited, status=0/SUCCESS)
+>        CPU: 870us
+>
+>Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
+>Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
 
-13 - Configuração da rede - Opção somente rede TOR - Necessita algumas configurações adicionais
-
-13.1 - Instale o pacote do TOR
-nauru@terenanode:~$ sudo apt install tor
-
-13.2 -  Verifique se está rodando corretamente
-nauru@terenanode:~$ sudo systemctl status tor
-[sudo] password for nauru: 
-● tor.service - Anonymizing overlay network for TCP (multi-instance-master)
-     Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)
-     Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago
-    Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
-   Main PID: 819 (code=exited, status=0/SUCCESS)
-        CPU: 870us
-
-Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
-Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
-
-13.3 - Adicione seu nome de usuário ao grupo do tor
-
-nauru@terenanode:~$ sudo usermod -a -G debian-tor nauru # no caso retire o 'nauru' e coloque seu nome de login
-
-13.4 -  Edite o arquivo do tor 
-nauru@terenanode:~$ sudo nano /etc/tor/torrc
-
-13.5 - Retire o # das seguintes linhas ou descomente
+22 - Adicione seu nome de usuário ao grupo do tor
+```
+sudo usermod -a -G debian-tor nauru # no caso retire o 'nauru' e coloque seu nome de login
+```
+23 -  Edite o arquivo do tor 
+```
+sudo nano /etc/tor/torrc
+```
+24 - Retire o # das seguintes linhas ou descomente
+```
 ControlPort 9051
 CookieAuthentication 1
 ExitPolicy reject *:* # no exits allowed ou seja não usam o seu node como router onion
-
-13.6 - Faça o restart do tor para aplicar as configurações
-nauru@terenanode:~$ sudo systemctl restart tor
-
-13.7 - Edite o arquivo config colocando as linhas abaixo
-
+```
+25 - Faça o restart do tor para aplicar as configurações
+```
+sudo systemctl restart tor
+```
+26 - Edite o arquivo config colocando as linhas abaixo
+```
+nano ~/.lightning/config
+```
+```
 # Config para TOR
 ## Configure proxy/tor for OUTBOUND connections.
 proxy=127.0.0.1:9050
 bind-addr=0.0.0.0:9735
 #Anunciar para rede TOR
 addr=statictor:127.0.0.1:9051/torport=9735
-
 ## Forçar todas as conexões pela rede TOR pelo proxy/tor
 always-use-proxy=true
+```
+27 - Faça o restart do node para aplicar a configuração com o comando
+```
+lightning-cli stop && sleep 2 && lightningd
+```
+28 - Check as configurações que devem estar parecidas com a saída abaixo
+```
+lightning-cli getinfo
+```
+Saída do comando:
+>{
+>   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
+>   "alias": "T3R3N4ORG",
+>   "color": "ffa500",
+>   "num_peers": 0,
+>   "num_pending_channels": 0,
+>   "num_active_channels": 0,
+>   "num_inactive_channels": 0,
+>   "address": []
+>      {
+>         "type": "torv3",
+>         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
+>         "port": 9735
+>      }
+>   ],
+>   "binding": []
+>      {
+>         "type": "ipv4",
+>         "address": "0.0.0.0",
+>         "port": 9735
+>      }
+>   ],
+>   "version": "23.08.1",
+>   "blockheight": 814144,
+>   "network": "bitcoin",
+>   "fees_collected_msat": 0,
+>   "lightning-dir": "/home/nauru/.lightning/bitcoin",
+>   "our_features": {
+>      "init": "08a0000a0a69a2",
+>      "node": "88a0000a0a69a2",
+>      "channel": "",
+>      "invoice": "02000002024100"
+>   }
+>}
 
-13.8 - Faça o restart do node para aplicar a configuração com o comando
-nauru@terenanode:~$ lightning-cli stop && sleep 2 && lightningd
+29 - Configuração da rede - Opção modo Híbrido - Usando a CLEARNET e TOR ao mesmo tempo 
 
-13.9 - Check as configurações que devem estar parecidas com a saída abaixo
-
-nauru@terenanode:~$ lightning-cli getinfo
-{
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
-   "alias": "T3R3N4ORG",
-   "color": "ffa500",
-   "num_peers": 0,
-   "num_pending_channels": 0,
-   "num_active_channels": 0,
-   "num_inactive_channels": 0,
-   "address": [
-      {
-         "type": "torv3",
-         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
-         "port": 9735
-      }
-   ],
-   "binding": [
-      {
-         "type": "ipv4",
-         "address": "0.0.0.0",
-         "port": 9735
-      }
-   ],
-   "version": "23.08.1",
-   "blockheight": 814144,
-   "network": "bitcoin",
-   "fees_collected_msat": 0,
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",
-   "our_features": {
-      "init": "08a0000a0a69a2",
-      "node": "88a0000a0a69a2",
-      "channel": "",
-      "invoice": "02000002024100"
-   }
-}
-
-14 - Configuração da rede - Opção modo Híbrido - Usando a CLEARNET e TOR ao mesmo tempo 
-
-14.1 - Edite o arquivo config e insira as informações abaixo. É necessário que as configurações da rede TOR já tenham sido feitas
+30 - Edite o arquivo config e insira as informações abaixo. É necessário que as configurações da rede TOR já tenham sido feitas
+```
+nano ~/.lightning/config
+```
+```
 # Config para TOR CLEARNET
 ## Configure proxy/tor for OUTBOUND connections.
 proxy=127.0.0.1:9050
 bind-addr=0.0.0.0:9735
 #Anunciar para rede TOR
 addr=statictor:127.0.0.1:9051/torport=9735
-
 ## Colocando em false o node torna-se híbrido
 always-use-proxy=false
+```
+31 - Realize o restart e confira a nova configuração
+```
+lightning-cli getinfo
+```
+Saída do comando:
+>{
+>   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
+>   "alias": "T3R3N4ORG",
+>   "color": "ffa500",
+>   "num_peers": 0,
+>   "num_pending_channels": 0,
+>   "num_active_channels": 0,
+>   "num_inactive_channels": 0,
+>   "address": [
+>      {
+>         "type": "torv3",
+>         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
+>         "port": 9735
+>      }
+>   ],
+>   "binding": [
+>      {
+>         "type": "ipv4",
+>         "address": "0.0.0.0",
+>         "port": 9735
+>      }
+>   ],
+>   "version": "23.08.1",
+>   "blockheight": 814146,
+>   "network": "bitcoin",
+>   "fees_collected_msat": 0,
+>   "lightning-dir": "/home/nauru/.lightning/bitcoin",
+>   "our_features": {
+>      "init": "08a0000a0a69a2",
+>      "node": "88a0000a0a69a2",
+>      "channel": "",
+>      "invoice": "02000002024100"
+>   }
+>}
 
-14.2 - Realize o restart e confira a nova configuração
-
-nauru@terenanode:~$ lightning-cli getinfo
-{
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
-   "alias": "T3R3N4ORG",
-   "color": "ffa500",
-   "num_peers": 0,
-   "num_pending_channels": 0,
-   "num_active_channels": 0,
-   "num_inactive_channels": 0,
-   "address": [
-      {
-         "type": "torv3",
-         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
-         "port": 9735
-      }
-   ],
-   "binding": [
-      {
-         "type": "ipv4",
-         "address": "0.0.0.0",
-         "port": 9735
-      }
-   ],
-   "version": "23.08.1",
-   "blockheight": 814146,
-   "network": "bitcoin",
-   "fees_collected_msat": 0,
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",
-   "our_features": {
-      "init": "08a0000a0a69a2",
-      "node": "88a0000a0a69a2",
-      "channel": "",
-      "invoice": "02000002024100"
-   }
-}
-
-14.3 - Caso possua um IPv4 fixo pode acrescentar a linha no exemplo abaixo
-
+32 - Caso possua um IPv4 fixo pode acrescentar a linha no exemplo abaixo
+```
 announce-addr=103.195.101.174:9735
-
-14.4 - A saida de teste será como abaixo
-
-nauru@terenanode:~$ lightning-cli getinfo
-{
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
-   "alias": "T3R3N4ORG",
-   "color": "ffa500",
-   "num_peers": 0,
-   "num_pending_channels": 0,
-   "num_active_channels": 0,
-   "num_inactive_channels": 0,
-   "address": [
-      {
-         "type": "ipv4",
-         "address": "103.195.101.174",
-         "port": 9735
-      },
-      {
-         "type": "torv3",
-         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
-         "port": 9735
-      }
-   ],
-   "binding": [
-      {
-         "type": "ipv4",
-         "address": "0.0.0.0",
-         "port": 9735
-      }
-   ],
-   "version": "23.08.1",
-   "blockheight": 814147,
-   "network": "bitcoin",
-   "fees_collected_msat": 0,
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",
-   "our_features": {
-      "init": "08a0000a0a69a2",
-      "node": "88a0000a0a69a2",
-      "channel": "",
-      "invoice": "02000002024100"
-   }
+```
+A saida de teste será como abaixo
+```
+lightning-cli getinfo
+```
+>{
+>   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
+>   "alias": "T3R3N4ORG",
+>   "color": "ffa500",
+>   "num_peers": 0,
+>   "num_pending_channels": 0,
+>   "num_active_channels": 0,
+>   "num_inactive_channels": 0,
+>   "address": [
+>      {
+>         "type": "ipv4",
+>         "address": "103.195.101.174",
+>         "port": 9735
+>      },
+>      {
+>         "type": "torv3",
+>         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
+>         "port": 9735
+>      }
+>   ],
+>   "binding": [
+>      {
+>         "type": "ipv4",
+>         "address": "0.0.0.0",
+>         "port": 9735
+>      }
+>   ],
+>   "version": "23.08.1",
+>   "blockheight": 814147,
+>   "network": "bitcoin",
+>   "fees_collected_msat": 0,
+>   "lightning-dir": "/home/nauru/.lightning/bitcoin",
+>   "our_features": {
+>      "init": "08a0000a0a69a2",
+>      "node": "88a0000a0a69a2",
+>      "channel": "",
+>      "invoice": "02000002024100"
+>   }
    
 Como proteger a Seed do Node
 
-1 - A seed está localizada na pasta
-
-˜/.lightning/bitcoin/hsm_secret
-
-machado@terenanode:~$ cd .lightning/bitcoin/
-machado@terenanode:~/.lightning/bitcoin$ ls
-accounts.sqlite3  ca.pem          client.pem         gossip_store          hsm_secret     lightningd.sqlite3  server.pem
-ca-key.pem        client-key.pem  emergency.recover  gossip_store.corrupt  lightning-rpc  server-key.pem
-
-2 - Para verificar o conteúdo da seed
+33 - A seed está localizada na pasta
+```
+ls -la ˜/.lightning/bitcoin/hsm_secret
+```
+34 - Para verificar o conteúdo da seed
+```
 xxd hsm_secret
-
-3 - Para fazer o backup da chave
+```
+35 - Para fazer o backup da chave
+```
  cat > hsm_secret.bak <<END
-
+```
 Copie e cole as linhas do comando de 2
 
-4 - Para restaurar
+36 - Para restaurar
+```
  xxd -r hsm_secret.bak > hsm_secret
- 
-5 - A seed tem que estar apenas leitura
+``` 
+37 - A seed tem que estar apenas leitura
+```
  chmod 400 hsm_secret
-
-6 - Para gerar uma seed pessoal com script de entropia
-6.1 - Baixe um script da coldcard
+```
+38 - Para gerar uma seed pessoal com script de entropia, baixe um script da coldcard:
+```
  wget https://coldcard.com/docs/rolls.py
-6.2 - Gere as palavras da seed
+```
+39 - Gere as palavras da seed
+```
  echo '23123125534534534534377676768877' | python3 rolls.py
-6.3 - Com as palavras BIP39 em mãos, proceda com a criação da hsm_secret
+```
+40 - Com as palavras BIP39 em mãos, proceda com a criação da hsm_secret
+```
  lightning-hsmtool generatehsm hsm_secret
-
-6.4 - Como visto no procedimento anterior, foi solicitada uma senha para encriptar a seed. Caso não tenha fornecido, o procedimento pode ser feito com o comando
-
+```
+41 - Como visto no procedimento anterior, foi solicitada uma senha para encriptar a seed. Caso não tenha fornecido, o procedimento pode ser feito com o comando
+```
 lightning-hsmtool  encrypt hsm_secret 
-
-6.5 - Para o node poder iniciar a seguinte linha deve ser acrescentada no arquivo config do node
+```
+42 - Para o node poder iniciar a seguinte linha deve ser acrescentada no arquivo config do node
  --encrypted-hsm
 
-6.6 - Quando iniciar o node ele abrirá o prompt para entrada da senha e prosseguir com a inicialização
+43 - Quando iniciar o node ele abrirá o prompt para entrada da senha e prosseguir com a inicialização
 
 Instalando RTL no CLN
 
-1 - Instalar o C-Lightning-REST
+44 - Instalar o C-Lightning-REST
 
 PGP Key:  https://keybase.io/suheb
 Download the release and signature:
