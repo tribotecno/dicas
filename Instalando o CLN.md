@@ -632,6 +632,41 @@ cp Sample-RTL-Config.json RTL-Config.json
 ```
  nano RTL-Config.json
 ```
+Inserir as informações abaixo, ajustando para sua configuração:
+```
+{
+  "multiPass": "escolhaumasenhaforte"
+  "port": "3000",
+  "defaultNodeIndex": 1,
+  "dbDirectoryPath": "/home/nauru/RTL",
+  "SSO": {
+    "rtlSSO": 0,
+    "rtlCookiePath": "",
+    "logoutRedirectLink": ""
+  },
+  "nodes": [
+    {
+      "index": 1,
+      "lnNode": "T3R3N4ORG Node",
+      "lnImplementation": "CLN",
+      "Authentication": {
+        "macaroonPath": "/home/nauru/c-lightning-REST-0.10.7/certs",
+        "configPath": "/home/nauru/.lightning/config"
+      },
+      "Settings": {
+        "userPersona": "OPERATOR",
+        "themeMode": "NIGHT",
+        "themeColor": "PURPLE",
+        "channelBackupPath": "/home/nauru/.lightning/rtl-backup",
+        "logLevel": "ERROR",
+        "lnServerUrl": "https://127.0.0.1:3001",
+        "fiatConversion": false,
+        "unannouncedChannels": false
+      }
+    }
+  ]
+}
+```
 
 60 - Criar as pastas para backup do RTL
 ```
@@ -665,73 +700,99 @@ A saída deverá ser:
 > node      22244 nauru   29u  IPv6 171463      0t0  TCP *:4001 (LISTEN)
 > node      22900 nauru   25u  IPv6 173507      0t0  TCP *:3000 (LISTEN)
 
-Os plugins trazem mais funcionalidade para a administração do node
+63 - Realize o acesso ao RTL localmente pela URL informada na saída ou então remotamente (pelo nome ou IP):
+```
+http://192.168.1.130:3000
+```
+## ATENÇÃO: Esse acesso não é criptografado, por isso   use apenas na sua rede local ou através de VPN TAILSCALE
 
-1 - Acesse o github dos plugins e realize a clonagem
- git clone https://github.com/lightningd/plugins.git
+## Como instalar os plugins para trazer mais funcionalidades para a administração do node
 
-2 - Pare o node
- lightning-cli stop
-
-3 - Entre na pasta do CLN
- cd .lightning/
-
-4 - Mova os plugins para dentro da pasta
+64 - Acesse o github dos plugins e realize a clonagem dos plugins
+```
+git clone https://github.com/lightningd/plugins.git
+```
+65 - Pare o node
+```
+lightning-cli stop
+```
+66 - Entre na pasta do CLN
+```
+cd  ~/.lightning/
+```
+67 - Mova os plugins para dentro da pasta
+```
  mv ˜/plugins/ plugins-available
-
-5 - Crie a pasta dos plugins que serão ativados
- mkdir plugins-enabled
-
-6 - Entre na pasta dos plugins
- cd plugins-available/
-
-7 - Vamos escolher um plugin de exemplo: o summary
+```
+68 - Crie a pasta dos plugins que serão ativados
+```
+mkdir plugins-enabled
+```
+69 - Entre na pasta dos plugins
+```
+cd plugins-available/
+```
+70 - Vamos escolher um plugin de exemplo: o summary
+```
  cd summary/
  pip3 install --user -r requirements.txt
  pip3 install --user pyln-bolt1 pyln-bolt2 pyln-bolt4 pyln-bolt7 pyln-client pyln-proto
-
-8 - Insira a linha no arquivo config onde estarão os plugins ativados
+```
+71 - Insira a linha no arquivo config onde estarão os plugins ativados
+```
  # plugins
- plugin-dir=/home/machado/.lightning/plugins-enabled
-
-9 - Crie agora o link simbolico para ativar o plugin
- cd plugins-enabled
- ln -s /home/machado/.lightning/plugins-available/summary/summary.py ./summary.py
-
-10 - Inicie o CLN
- lightningd
-
-11 - Para testar execute o comando no plugin
- lightning-cli -H summary
-
-12 - Para remover o plugin execute os comandos
+ plugin-dir=/home/nauru/.lightning/plugins-enabled
+```
+72 - Crie agora o link simbolico para ativar o plugin
+```
+cd plugins-enabled
+ln -s /home/nauru/.lightning/plugins-available/summary/summary.py ./summary.py
+```
+73 - Inicie o CLN
+```
+lightningd
+```
+74 - Para testar execute o comando no plugin
+```
+lightning-cli -H summary
+```
+75 - Para remover o plugin execute os comandos
+```
  lightning-cli  stop
  rm .lightning/plugins-enabled/summary.py
  lightningd
+```
 
-Backup dos Canais no CLN
+## Backup dos Canais no CLN
 Para manter um backup de segurança dos seus canais, um ponto de montagem diferente do seu disco normal pode ser usado. Por exemplo um pendrive de boa capacidade.
 Os seguintes procedimentos devem ser realizados
 
-1 - Monte o disco ou pendrive no seu node
+76 - Monte o disco ou pendrive no seu node
 
-2 - A seguinte linha deve ser adicionada no seu arquivo config alterando apropriadamente os seus apontamentos
-# backup wallet=sqlite3:///home/machado/.lightning/bitcoin/lightningd.sqlite3:/media/pen128gb/backup/lightningd.sqlite3 
+77 - A seguinte linha deve ser adicionada no seu arquivo config alterando apropriadamente os seus apontamentos
+```
+# backup wallet=sqlite3:///home/nauru/.lightning/bitcoin/lightningd.sqlite3:/media/pen128gb/backup/lightningd.sqlite3 
+```
+78 - Realize o restart do node
 
-3 - Realize o restart do node
 
-É o mesmo que na instalação
+## Como realizar o update do CLN
 
+79 - Baixe a nova versão e realize os testes de integridade conforme mostrado na instalação inicial:
+```
 wget https://github.com/ElementsProject/lightning/releases/download/v23.11/clightning-v23.11-Ubuntu-22.04.tar.xz
+```
 
-Stop CLN daemon
+80 - Parar o CLN
 
+81 - Descompactar o pacote com o comando abaixo:
+```
 sudo tar -xvf <release>.tar.xz -C /usr/local --strip-components=2
+```
 
-De <https://github.com/ElementsProject/lightning/blob/master/doc/getting-started/getting-started/installation.md> 
-
-#Rodar com o comando abaixo pois não vai
+82 - Na primeira vez que rodar use o comando abaixo para ser feito o update do Banco de Dados:
+```
 lightningd --database-upgrade=true
+```
 
-Instalando NGIX para acesso seguro RTL CLN
 
