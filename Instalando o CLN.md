@@ -44,10 +44,13 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 15EE8D6CAB0E7F0CF999BFCBD9200E6
 
 A saída do comando será a demonstrada abaixo:
 
-__gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created__
-__gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported__
-__gpg: Total number processed: 1__
-__gpg:               imported: 1__
+> gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created
+
+> gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported
+
+> gpg: Total number processed: 1
+
+> gpg:               imported: 1
 
 
 ```
