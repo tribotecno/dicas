@@ -45,11 +45,11 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 15EE8D6CAB0E7F0CF999BFCBD9200E6
 A saída do comando será a demonstrada abaixo:
 
 > gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created
-
+>
 > gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported
-
+>
 > gpg: Total number processed: 1
-
+>
 > gpg:               imported: 1
 
 
@@ -57,21 +57,24 @@ A saída do comando será a demonstrada abaixo:
 gpg --verify SHA256SUMS.asc
 ```
 Saída do comando:
-gpg: assuming signed data in 'SHA256SUMS'
-gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC
-gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1
-gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]
+> gpg: assuming signed data in 'SHA256SUMS'
+> 
+> gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC
+> 
+> gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1
+>
+> gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]
 
 ```
 sha256sum clightning-v23.08.1-Ubuntu-22.04.tar.xz 
 ```
 Saída do comando:
-96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
+> 96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
 ```
 cat SHA256SUMS |grep clightning-v23.08.1-Ubuntu-22.04.tar.xz
 ```
 Saída do comando para comparar com o check anterior:
-96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
+> 96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
 
 8 - Descompactar o aplicativo
 ```
