@@ -1,7 +1,10 @@
 # Passos para Instalação do CLN
 0 - Neste tutorial partimos do pressuposto do servidor Ubuntu já estar instalado. Para aprender assistam alguns desses nossos videos no canal:
+
 https://youtu.be/ifIrWBHU8gs
+
 https://youtu.be/zFXTC8Qimf8
+
 https://youtu.be/jVxk6pVgiuI
 
 1 - Instalar os pacotes necessários
@@ -16,11 +19,19 @@ sudo apt-get install -y software-properties-common
 ```
  sudo ln -s /snap/bitcoin-core/current/bin/bitcoin{d,-cli} /usr/local/bin/
 ```
-4 - Baixar o pacote do CLN pré-compilado para Ubuntu 22.04 
+4 - Rodar o daemon do Core Bitcoin
+```
+bitcoind -daemon
+```
+5 - Verifique a sincronização da blockchain no log
+```
+tail -f .bitcoin/debug.log
+```
+6 - Baixar o pacote do CLN pré-compilado para Ubuntu 22.04 
 ```
 wget https://github.com/ElementsProject/lightning/releases/download/v23.08.1/clightning-v23.08.1-Ubuntu-22.04.tar.xz
 ```
-5 - Fazer o check do pacote CLN com as assinaturas
+7 - Fazer o check do pacote CLN com as assinaturas
 ```
 wget https://github.com/ElementsProject/lightning/releases/download/v23.08.1/SHA256SUMS
 ```
@@ -55,25 +66,17 @@ cat SHA256SUMS |grep clightning-v23.08.1-Ubuntu-22.04.tar.xz
 Saída do comando para comparar com o check anterior:
 96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
 
-6 - Descompactar o aplicativo
+8 - Descompactar o aplicativo
 ```
 sudo tar -xvf clightning-v23.08.1-Ubuntu-22.04.tar.xz -C /usr/local --strip-components=2
 ```
-7 - Instalar outros pacotes necessários
+9 - Instalar outros pacotes necessários
 ```
 sudo apt-get install python3-json5 python3-flask python3-gunicorn  python3-pip
 ```
 ```
 pip3 install --user flask_restx pyln-client
 ``` 
-8 - Rodar o daemon do Core Bitcoin
-```
-bitcoind -daemon
-```
-9 - Verifique a sincronização da blockchain no log
-```
-tail -f .bitcoin/debug.log
-```
 10 - Realize a configuração básica do CLN
 ```
 nano ~/.lightning/config
