@@ -469,11 +469,19 @@ Copie e cole as linhas do comando
 ```
  chmod 400 hsm_secret
 ```
+## Atenção, os passos abaixo alteram o endereço da carteira. Faça apenas se tiver instalando um node NOVO!!!
+Execute antes os passos abaixo de apagar a hsm_secret e o arquivo da carteira:
+```
+cd .lightning/bitcoin/
+lightning-cli stop
+rm hsm_secret
+rm lightningd.sqlite3
+```
 38 - Para gerar uma seed pessoal com script de entropia, baixe um script da coldcard:
 ```
  wget https://coldcard.com/docs/rolls.py
 ```
-39 - Gere as palavras da seed
+39 - Gere as palavras da seed (não esquece de acrescentar mais números para gerar entropia diferente):
 ```
  echo '23123125534534534534377676768877' | python3 rolls.py
 ```
