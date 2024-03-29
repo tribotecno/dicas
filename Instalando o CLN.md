@@ -88,6 +88,11 @@ sudo apt-get install python3-json5 python3-flask python3-gunicorn  python3-pip
 pip3 install --user flask_restx pyln-client
 ``` 
 10 - Realize a configuração básica do CLN
+Rode primeiro o comando abaixo:
+```
+lightningd --network=bitcoin --log-level=debug
+```
+Caso tudo esteja correto dê um Crtl-C para interromper e realizar as configurações seguintes:
 ```
 nano ~/.lightning/config
 ```
