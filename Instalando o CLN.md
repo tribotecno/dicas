@@ -633,7 +633,7 @@ A saída deverá ser a abaixo:
 ```
 57 - Ir para a pasta do aplicativo e instalar:
 ```
-cd RTL
+cd RTL-0.14.1
 npm install --only-prod --legacy-peer-deps
 ```
 
@@ -649,7 +649,7 @@ cp Sample-RTL-Config.json RTL-Config.json
 Inserir as informações abaixo, ajustando para sua configuração:
 ```
 {
-  "multiPass": "escolhaumasenhaforte"
+  "multiPass": "escolhaumasenhaforte",
   "port": "3000",
   "defaultNodeIndex": 1,
   "dbDirectoryPath": "/home/nauru/RTL",
