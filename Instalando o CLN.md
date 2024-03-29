@@ -499,7 +499,7 @@ encrypted-hsm
 ```
 43 - Quando iniciar o node ele abrirá o prompt para entrada da senha e prosseguir com a inicialização
 
-Instalando RTL no CLN
+## Instalando o Ride The Lightning (RTL) no CLN
 
 44 - Instalar o C-Lightning-REST, baixando o release e assinatura:
 ```
