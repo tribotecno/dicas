@@ -448,7 +448,8 @@ lightning-cli getinfo
 
 33 - A seed está localizada na pasta
 ```
-ls -la ˜/.lightning/bitcoin/hsm_secret
+cd  .lightning/bitcoin/
+ls -la hsm_secret
 ```
 34 - Para verificar o conteúdo da seed
 ```
