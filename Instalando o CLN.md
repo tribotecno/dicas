@@ -82,7 +82,7 @@ sudo tar -xvf clightning-v23.08.1-Ubuntu-22.04.tar.xz -C /usr/local --strip-comp
 ```
 9 - Instalar outros pacotes necessários
 ```
-sudo apt-get install python3-json5 python3-flask python3-gunicorn  python3-pip
+sudo apt-get install python3-json5 python3-flask python3-gunicorn  python3-pip libpq-dev
 ```
 ```
 pip3 install --user flask-cors flask_restx pyln-client flask-socketio gevent gevent-websocket
