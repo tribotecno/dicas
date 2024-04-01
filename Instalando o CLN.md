@@ -736,7 +736,7 @@ cd  ~/.lightning/
 ```
 67 - Mova os plugins para dentro da pasta
 ```
- mv ˜/plugins/ plugins-available
+ mv ../plugins/ plugins-available
 ```
 68 - Crie a pasta dos plugins que serão ativados
 ```
