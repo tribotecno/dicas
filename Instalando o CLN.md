@@ -44,38 +44,42 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 15EE8D6CAB0E7F0CF999BFCBD9200E6
 
 A saída do comando será a demonstrada abaixo:
 
-`
-gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created
 
-gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported
+`gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created`
 
-gpg: Total number processed: 1
+`gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported`
 
-gpg:               imported: 1
-`
+`gpg: Total number processed: 1`
+
+`gpg:               imported: 1` 
+
 
 ```
 gpg --verify SHA256SUMS.asc
 ```
 Saída do comando:
-> gpg: assuming signed data in 'SHA256SUMS'
-> 
-> gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC
-> 
-> gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1
->
-> gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]
+
+`gpg: assuming signed data in 'SHA256SUMS'`
+ 
+`gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC`
+ 
+`gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1`
+
+`gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]`
 
 ```
 sha256sum clightning-v23.08.1-Ubuntu-22.04.tar.xz 
 ```
 Saída do comando:
-> 96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
+
+`96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz`
+
 ```
 cat SHA256SUMS |grep clightning-v23.08.1-Ubuntu-22.04.tar.xz
 ```
 Saída do comando para comparar com o check anterior:
-> 96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz
+
+`96d6b78a43b53078d0ca13e2cdb6797ce2846e22d6d0bc580393107699d08119  clightning-v23.08.1-Ubuntu-22.04.tar.xz`
 
 8 - Descompactar o aplicativo
 ```
@@ -121,39 +125,72 @@ lightningd
 lightning-cli getinfo
 ```
 A saída obtida será parecida com a abaixo:
->{
->   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
->   "alias": "T3R3N4ORG",
->   "color": "ffa500",
->   "num_peers": 0,
->   "num_pending_channels": 0,
->   "num_active_channels": 0,
->   "num_inactive_channels": 0,
->   "address": [],
->   "binding": [],
->  {
->         "type": "ipv6",
->         "address": "::",
->         "port": 9735
->      },
->      {
->         "type": "ipv4",
->         "address": "0.0.0.0",
->         "port": 9735
->      }
->   ],
->   "version": "23.08.1",
->   "blockheight": 814139,
->   "network": "bitcoin",
->   "fees_collected_msat": 0,
->   "lightning-dir": "/home/nauru/.lightning/bitcoin",
->   "our_features": {
->      "init": "08a0000a0a69a2",
->      "node": "88a0000a0a69a2",
->      "channel": "",
->      "invoice": "02000002024100"
->   }
->}
+
+`{`
+
+`   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`
+
+`   "alias": "T3R3N4ORG",`
+
+`   "color": "ffa500",`
+
+`   "num_peers": 0,`
+
+`   "num_pending_channels": 0,`
+
+`   "num_active_channels": 0,`
+
+`   "num_inactive_channels": 0,`
+
+`   "address": [],`
+
+`   "binding": [],`
+
+`  {`
+
+`         "type": "ipv6",`
+
+`         "address": "::",`
+
+`         "port": 9735`
+
+`      },`
+
+`      {`
+
+`         "type": "ipv4",`
+
+`         "address": "0.0.0.0",`
+
+`         "port": 9735`
+
+`      }`
+
+`   ],`
+
+`   "version": "23.08.1",`
+
+`   "blockheight": 814139,`
+
+`   "network": "bitcoin",`
+
+`   "fees_collected_msat": 0,`
+
+`   "lightning-dir": "/home/nauru/.lightning/bitcoin",`
+
+`   "our_features": {`
+
+`      "init": "08a0000a0a69a2",`
+
+`      "node": "88a0000a0a69a2",`
+
+`      "channel": "",`
+
+`      "invoice": "02000002024100"`
+
+`   }`
+
+`}`
 
 14 - O CLN automaticamente configura a parte da rede para a CLEARNET. Para testar a conectividade vamos usar o node da KRAKEN para isso:
 ```
