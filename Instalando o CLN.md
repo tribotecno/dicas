@@ -247,6 +247,7 @@ sudo apt install tor
 sudo systemctl status tor
 ```
 Saída do comando: 
+`
 > [sudo] password for nauru:
 > 
 > tor.service - Anonymizing overlay network for TCP (multi-instance-master)
@@ -264,7 +265,7 @@ Saída do comando:
 >Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
 > 
 >Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
-
+`
 22 - Adicione seu nome de usuário ao grupo do tor
 ```
 sudo usermod -a -G debian-tor nauru # no caso retire o 'nauru' e coloque seu nome de login
@@ -720,91 +721,35 @@ http://192.168.1.130:3000
 ```
 ## ATENÇÃO: Esse acesso não é criptografado, por isso   use apenas na sua rede local ou através de VPN TAILSCALE
 
-## Como instalar os plugins para trazer mais funcionalidades para a administração do node
-
-64 - Acesse o github dos plugins e realize a clonagem dos plugins
-```
-git clone https://github.com/lightningd/plugins.git
-```
-65 - Pare o node
-```
-lightning-cli stop
-```
-66 - Entre na pasta do CLN
-```
-cd  ~/.lightning/
-```
-67 - Mova os plugins para dentro da pasta
-```
- mv ../plugins/ plugins-available
-```
-68 - Crie a pasta dos plugins que serão ativados
-```
-mkdir plugins-enabled
-```
-69 - Entre na pasta dos plugins
-```
-cd plugins-available/
-```
-70 - Vamos escolher um plugin de exemplo: o summary
-```
- cd summary/
- pip3 install --user -r requirements.txt
- pip3 install --user pyln-bolt1 pyln-bolt2 pyln-bolt4 pyln-bolt7 pyln-client pyln-proto
-```
-71 - Insira a linha no arquivo config onde estarão os plugins ativados
-```
- # plugins
- plugin-dir=/home/nauru/.lightning/plugins-enabled
-```
-72 - Crie agora o link simbolico para ativar o plugin
-```
-cd plugins-enabled
-ln -s /home/nauru/.lightning/plugins-available/summary/summary.py ./summary.py
-```
-73 - Inicie o CLN
-```
-lightningd
-```
-74 - Para testar execute o comando no plugin
-```
-lightning-cli -H summary
-```
-75 - Para remover o plugin execute os comandos
-```
- lightning-cli  stop
- rm .lightning/plugins-enabled/summary.py
- lightningd
-```
 
 ## Backup dos Canais no CLN
 Para manter um backup de segurança dos seus canais, um ponto de montagem diferente do seu disco normal pode ser usado. Por exemplo um pendrive de boa capacidade.
 Os seguintes procedimentos devem ser realizados
 
-76 - Monte o disco ou pendrive no seu node
+64 - Monte o disco ou pendrive no seu node
 
-77 - A seguinte linha deve ser adicionada no seu arquivo config alterando apropriadamente os seus apontamentos
+65 - A seguinte linha deve ser adicionada no seu arquivo config alterando apropriadamente os seus apontamentos
 ```
 # backup wallet=sqlite3:///home/nauru/.lightning/bitcoin/lightningd.sqlite3:/media/pen128gb/backup/lightningd.sqlite3 
 ```
-78 - Realize o restart do node
+66 - Realize o restart do node
 
 
 ## Como realizar o update do CLN
 
-79 - Baixe a nova versão e realize os testes de integridade conforme mostrado na instalação inicial:
+67 - Baixe a nova versão e realize os testes de integridade conforme mostrado na instalação inicial:
 ```
 wget https://github.com/ElementsProject/lightning/releases/download/v23.11/clightning-v23.11-Ubuntu-22.04.tar.xz
 ```
 
-80 - Parar o CLN
+68 - Parar o CLN
 
-81 - Descompactar o pacote com o comando abaixo:
+69 - Descompactar o pacote com o comando abaixo:
 ```
 sudo tar -xvf <release>.tar.xz -C /usr/local --strip-components=2
 ```
 
-82 - Na primeira vez que rodar use o comando abaixo para ser feito o update do Banco de Dados:
+70 - Na primeira vez que rodar use o comando abaixo para ser feito o update do Banco de Dados:
 ```
 lightningd --database-upgrade=true
 ```
