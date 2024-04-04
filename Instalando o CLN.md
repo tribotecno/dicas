@@ -45,13 +45,10 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys 15EE8D6CAB0E7F0CF999BFCBD9200E6
 A saída do comando será a demonstrada abaixo:
 
 
-`gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created`
-
-`gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported`
-
-`gpg: Total number processed: 1`
-
-`gpg:               imported: 1` 
+`gpg: /home/nauru/.gnupg/trustdb.gpg: trustdb created`<br>
+`gpg: key D9200E6CD1ADB8F1: public key "Rusty Russell <rusty@rustcorp.com.au>" imported`<br>
+`gpg: Total number processed: 1`<br>
+`gpg:               imported: 1` <br>
 
 
 ```
@@ -59,13 +56,10 @@ gpg --verify SHA256SUMS.asc
 ```
 Saída do comando:
 
-`gpg: assuming signed data in 'SHA256SUMS'`
- 
-`gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC`
- 
-`gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1`
-
-`gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]`
+`gpg: assuming signed data in 'SHA256SUMS'`<br>
+ `gpg: Signature made Wed 13 Sep 2023 09:49:33 AM UTC`<br>
+ `gpg:                using RSA key 15EE8D6CAB0E7F0CF999BFCBD9200E6CD1ADB8F1`<br>
+`gpg: Good signature from "Rusty Russell <rusty@rustcorp.com.au>" [unknown]`<br>
 
 ```
 sha256sum clightning-v23.08.1-Ubuntu-22.04.tar.xz 
@@ -126,70 +120,38 @@ lightning-cli getinfo
 ```
 A saída obtida será parecida com a abaixo:
 
-`{`
-
-`   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`
-
-`   "alias": "T3R3N4ORG",`
-
-`   "color": "ffa500",`
-
-`   "num_peers": 0,`
-
-`   "num_pending_channels": 0,`
-
-`   "num_active_channels": 0,`
-
-`   "num_inactive_channels": 0,`
-
-`   "address": [],`
-
-`   "binding": [],`
-
-`  {`
-
-`         "type": "ipv6",`
-
-`         "address": "::",`
-
-`         "port": 9735`
-
-`      },`
-
-`      {`
-
-`         "type": "ipv4",`
-
-`         "address": "0.0.0.0",`
-
-`         "port": 9735`
-
-`      }`
-
-`   ],`
-
-`   "version": "23.08.1",`
-
-`   "blockheight": 814139,`
-
-`   "network": "bitcoin",`
-
-`   "fees_collected_msat": 0,`
-
-`   "lightning-dir": "/home/nauru/.lightning/bitcoin",`
-
-`   "our_features": {`
-
-`      "init": "08a0000a0a69a2",`
-
-`      "node": "88a0000a0a69a2",`
-
-`      "channel": "",`
-
-`      "invoice": "02000002024100"`
-
-`   }`
-
+`{`<br>
+`   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`<br>
+`   "alias": "T3R3N4ORG",`<br>
+`   "color": "ffa500",`<br>
+`   "num_peers": 0,`<br>
+`   "num_pending_channels": 0,`<br>
+`   "num_active_channels": 0,`<br>
+`   "num_inactive_channels": 0,`<br>
+`   "address": [],`<br>
+`   "binding": [],`<br>
+`  {`<br>
+`         "type": "ipv6",`<br>
+`         "address": "::",`<br>
+`         "port": 9735`<br>
+`      },`<br>
+`      {`<br>
+`         "type": "ipv4",`<br>
+`         "address": "0.0.0.0",`<br>
+`         "port": 9735`<br>
+`      }`<br>
+`   ],`<br>
+`   "version": "23.08.1",`<br>
+`   "blockheight": 814139,`<br>
+`   "network": "bitcoin",`<br>
+`   "fees_collected_msat": 0,`<br>
+`   "lightning-dir": "/home/nauru/.lightning/bitcoin",`<br>
+`   "our_features": {`<br>
+`      "init": "08a0000a0a69a2",`<br>
+`      "node": "88a0000a0a69a2",`<br>
+`      "channel": "",`<br>
+`      "invoice": "02000002024100"`<br>
+`   }`<br>
 `}`
 
 14 - O CLN automaticamente configura a parte da rede para a CLEARNET. Para testar a conectividade vamos usar o node da KRAKEN para isso:
@@ -197,16 +159,19 @@ A saída obtida será parecida com a abaixo:
 lightning-cli connect 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735
 ```
 A saída obtida será como a abaixo:
->{
->   "id": "02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69",
->   "features": >"80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000888a52a1",
->   "direction": "out",
->   "address": {
->      "type": "ipv4",
->      "address": "52.13.118.208",
->      "port": 9735
->   }
->}
+
+
+ `{`<br>
+   `"id": "02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69",`<br>
+   `"features":`<br> `"80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000888a52a1",`<br>
+   `"direction": "out",`<br>
+   `"address": {`<br>
+      `"type": "ipv4",`<br>
+      `"address": "52.13.118.208",`<br>
+      `"port": 9735`<br>
+   `}`<br>
+`}`<br>
+
 
 15 - Realize o teste de ping 
 ```
@@ -245,34 +210,36 @@ lightning-cli stop && sleep 2 && lightningd
 lightning-cli getinfo
 ```
 A saída do comando:
->{
->   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
->   "alias": "T3R3N4ORG",
->   "color": "ffa500",
->   "num_peers": 0,
->   "num_pending_channels": 0,
->   "num_active_channels": 0,
->   "num_inactive_channels": 0,
->   "address": [],
->   "binding": []
->      {
->         "type": "ipv4",
->         "address": "0.0.0.0",
->         "port": 9735
->      }
->   ],
->   "version": "23.08.1",
->   "blockheight": 814140,
->   "network": "bitcoin",
->   "fees_collected_msat": 0,
->   "lightning-dir": "/home/nauru/.lightning/bitcoin",
->   "our_features": {
->      "init": "08a0000a0a69a2",
->      "node": "88a0000a0a69a2",
->      "channel": "",
->      "invoice": "02000002024100"
->   }
->}
+`
+{<br>
+   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",<br>
+   "alias": "T3R3N4ORG",<br>
+   "color": "ffa500",<br>
+   "num_peers": 0,<br>
+   "num_pending_channels": 0,<br>
+   "num_active_channels": 0,<br>
+   "num_inactive_channels": 0,<br>
+   "address": [],<br>
+   "binding": []<br>
+      {<br>
+         "type": "ipv4",<br>
+         "address": "0.0.0.0",<br>
+         "port": 9735<br>
+      }<br>
+   ],<br>
+   "version": "23.08.1",<br>
+   "blockheight": 814140,<br>
+   "network": "bitcoin",<br>
+   "fees_collected_msat": 0,<br>
+   "lightning-dir": "/home/nauru/.lightning/bitcoin",<br>
+   "our_features": {<br>
+      "init": "08a0000a0a69a2",<br>
+      "node": "88a0000a0a69a2",<br>
+      "channel": "",<br>
+      "invoice": "02000002024100"<br>
+   }<br>
+}<br>
+`
 
 19 - Configuração da rede - Opção somente rede TOR - Necessita algumas configurações adicionais
 
