@@ -210,36 +210,36 @@ lightning-cli stop && sleep 2 && lightningd
 lightning-cli getinfo
 ```
 A saída do comando:
-`
-{<br>
-   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",<br>
-   "alias": "T3R3N4ORG",<br>
-   "color": "ffa500",<br>
-   "num_peers": 0,<br>
-   "num_pending_channels": 0,<br>
-   "num_active_channels": 0,<br>
-   "num_inactive_channels": 0,<br>
-   "address": [],<br>
-   "binding": []<br>
-      {<br>
-         "type": "ipv4",<br>
-         "address": "0.0.0.0",<br>
-         "port": 9735<br>
-      }<br>
-   ],<br>
-   "version": "23.08.1",<br>
-   "blockheight": 814140,<br>
-   "network": "bitcoin",<br>
-   "fees_collected_msat": 0,<br>
-   "lightning-dir": "/home/nauru/.lightning/bitcoin",<br>
-   "our_features": {<br>
-      "init": "08a0000a0a69a2",<br>
-      "node": "88a0000a0a69a2",<br>
-      "channel": "",<br>
-      "invoice": "02000002024100"<br>
-   }<br>
-}<br>
-`
+
+`{`<br>
+   `"id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`<br>
+   `"alias": "T3R3N4ORG",`<br>
+   `"color": "ffa500",`<br>
+   `"num_peers": 0,`<br>
+   `"num_pending_channels": 0,`<br>
+   `"num_active_channels": 0,`<br>
+   `"num_inactive_channels": 0,`<br>
+   `"address": [],`<br>
+   `"binding": []`<br>
+      `{`<br>
+         `"type": "ipv4",`<br>
+         `"address": "0.0.0.0",`<br>
+         `"port": 9735`<br>
+      `}`<br>
+   `],`<br>
+   `"version": "23.08.1",`<br>
+   `"blockheight": 814140,`<br>
+   `"network": "bitcoin",`<br>
+   `"fees_collected_msat": 0,`<br>
+   `"lightning-dir": "/home/nauru/.lightning/bitcoin",`<br>
+   `"our_features": {`<br>
+      `"init": "08a0000a0a69a2",`<br>
+     `"node": "88a0000a0a69a2",`<br>
+      `"channel": "",`<br>
+      `"invoice": "02000002024100"`<br>
+   `}`<br>
+`}`<br>
+
 
 19 - Configuração da rede - Opção somente rede TOR - Necessita algumas configurações adicionais
 
@@ -252,25 +252,18 @@ sudo apt install tor
 sudo systemctl status tor
 ```
 Saída do comando: 
-`
-> [sudo] password for nauru:
-> 
-> tor.service - Anonymizing overlay network for TCP (multi-instance-master)
->
->  Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)
->
->  Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago
-> 
->  Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
-> 
->  Main PID: 819 (code=exited, status=0/SUCCESS)
-> 
->  CPU: 870us
->
->Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...
-> 
->Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).
-`
+
+`[sudo] password for nauru:`<br>
+`tor.service - Anonymizing overlay network for TCP (multi-instance-master)`<br>
+`  Loaded: loaded (/lib/systemd/system/tor.service; enabled; vendor preset: enabled)`<br>
+`  Active: active (exited) since Fri 2023-10-27 20:32:33 UTC; 3h 50min ago`<br>
+`  Process: 819 ExecStart=/bin/true (code=exited, status=0/SUCCESS)`<br>
+` Main PID: 819 (code=exited, status=0/SUCCESS)`<br>
+`  CPU: 870us`<br>
+`Oct 27 20:32:33 terenanode systemd[1]: Starting Anonymizing overlay network for TCP (multi-instance-master)...`<br> 
+`Oct 27 20:32:33 terenanode systemd[1]: Finished Anonymizing overlay network for TCP (multi-instance-master).`<br>
+
+
 22 - Adicione seu nome de usuário ao grupo do tor
 ```
 sudo usermod -a -G debian-tor nauru # no caso retire o 'nauru' e coloque seu nome de login
@@ -311,41 +304,44 @@ lightning-cli stop && sleep 2 && lightningd
 ```
 lightning-cli getinfo
 ```
+
 Saída do comando:
->{
->   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
->   "alias": "T3R3N4ORG",
->   "color": "ffa500",
->   "num_peers": 0,
->   "num_pending_channels": 0,
->   "num_active_channels": 0,
->   "num_inactive_channels": 0,
->   "address": []
->      {
->         "type": "torv3",
->         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
->         "port": 9735
->      }
->   ],
->   "binding": []
->      {
->         "type": "ipv4",
->         "address": "0.0.0.0",
->         "port": 9735
->      }
->   ],
->   "version": "23.08.1",
->   "blockheight": 814144,
->   "network": "bitcoin",
->   "fees_collected_msat": 0,
->   "lightning-dir": "/home/nauru/.lightning/bitcoin",
->   "our_features": {
->      "init": "08a0000a0a69a2",
->      "node": "88a0000a0a69a2",
->      "channel": "",
->      "invoice": "02000002024100"
->   }
->}
+
+`{`<br>
+`   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`<br>
+`   "alias": "T3R3N4ORG",`<br>
+`   "color": "ffa500",`<br>
+`   "num_peers": 0,`<br>
+`   "num_pending_channels": 0,`<br>
+`   "num_active_channels": 0,`<br>
+`   "num_inactive_channels": 0,`<br>
+`   "address": []`<br>
+`      {`<br>
+`         "type": "torv3",`<br>
+`         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",`<br>
+`         "port": 9735`<br>
+`      }`<br>
+`   ],`<br>
+`   "binding": []`<br>
+`      {`<br>
+`         "type": "ipv4",`<br>
+`         "address": "0.0.0.0",`<br>
+`         "port": 9735`<br>
+`      }`<br>
+`   ],`<br>
+`   "version": "23.08.1"`<br>,
+`   "blockheight": 814144,`<br>
+`   "network": "bitcoin",`<br>
+`   "fees_collected_msat": 0,`<br>
+`   "lightning-dir": "/home/nauru/.lightning/bitcoin",`<br>
+`   "our_features": {`<br>
+`      "init": "08a0000a0a69a2",`<br>
+`      "node": "88a0000a0a69a2",`<br>
+`      "channel": "",`<br>
+`      "invoice": "02000002024100"`<br>
+`   }`<br>
+`}`<br>
+
 
 29 - Configuração da rede - Opção modo Híbrido - Usando a CLEARNET e TOR ao mesmo tempo 
 
@@ -368,40 +364,41 @@ always-use-proxy=false
 lightning-cli getinfo
 ```
 Saída do comando:
->{
->   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",
->   "alias": "T3R3N4ORG",
->   "color": "ffa500",
->   "num_peers": 0,
->   "num_pending_channels": 0,
->   "num_active_channels": 0,
->   "num_inactive_channels": 0,
->   "address": [
->      {
->         "type": "torv3",
->         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",
->         "port": 9735
->      }
->   ],
->   "binding": [
->      {
->         "type": "ipv4",
->         "address": "0.0.0.0",
->         "port": 9735
->      }
->   ],
->   "version": "23.08.1",
->   "blockheight": 814146,
->   "network": "bitcoin",
->   "fees_collected_msat": 0,
->   "lightning-dir": "/home/nauru/.lightning/bitcoin",
->   "our_features": {
->      "init": "08a0000a0a69a2",
->      "node": "88a0000a0a69a2",
->      "channel": "",
->      "invoice": "02000002024100"
->   }
->}
+
+`{`<br>
+`   "id": "0200b06c4bbce3d733e3631ca9c65fe6cebdf63a6baf76c473e8b9bc6ead545f74",`<br>
+`   "alias": "T3R3N4ORG",`<br>
+`   "color": "ffa500",`<br>
+`   "num_peers": 0,`<br>
+`   "num_pending_channels": 0,`<br>
+`   "num_active_channels": 0,`<br>
+`   "num_inactive_channels": 0,`<br>
+`   "address": [`<br>
+`      {`<br>
+`         "type": "torv3",`<br>
+`         "address": "blc2o4roharpux4iej536hbeqdktczcyvol2z2lbcwvf3qafigwydqid.onion",`<br>
+`       "port": 9735`<br>
+`      }`<br>
+`   ],`<br>
+`   "binding": [`<br>
+`      {`<br>
+`         "type": "ipv4",`<br>
+`         "address": "0.0.0.0",`<br>
+`         "port": 9735`<br>
+`      }`<br>
+`   ],`<br>
+`   "version": "23.08.1",`<br>
+`   "blockheight": 814146,`<br>
+`   "network": "bitcoin",`<br>
+`   "fees_collected_msat": 0,`<br>
+`   "lightning-dir": "/home/nauru/.lightning/bitcoin",`<br>
+`   "our_features": {`<br>
+`      "init": "08a0000a0a69a2",`<br>
+`      "node": "88a0000a0a69a2",`<br>
+`      "channel": "",`<br>
+`      "invoice": "02000002024100"`<br>
+`   }`<br>
+`}`<br>
 
 32 - Caso possua um IPv4 fixo pode acrescentar a linha no exemplo abaixo
 ```
@@ -758,5 +755,36 @@ sudo tar -xvf <release>.tar.xz -C /usr/local --strip-components=2
 ```
 lightningd --database-upgrade=true
 ```
+
+## Scripts para ajudar na manutenção
+
+71 - Copie e cole os comandos para o seu arquivo .bash_aliases
+```
+nano ~/.bash_aliases
+```
+
+Cole o conteúdo abaixo:
+```
+alias nodestart="bitcoind -daemon && lightningd && sleep 5 && echo 'Teste do Daemon Bitcoin' && bitcoin-cli echo 'hello world' && echo 'Teste do CLN' &&  lightning-cli getinfo"
+alias nodestop="lightning-cli stop && bitcoin-cli stop"
+alias clnlog="tail -f ~/.lightning/lightning.log"
+alias bitcoinlog="tail -f ~/.bitcoin/debug.log"
+alias clnedit="nano ~/.lightning/config"
+alias clninfo="lightning-cli getinfo"
+alias clnconnect="lightning-cli connect" $1 # acrescente o nodeid+ip_port no comando
+alias clnlistpeers="lightning-cli listpeers"
+alias clnstop="lightning-cli stop"
+alias clnstart="lightningd"
+alias clnrestart="lightning-cli stop && sleep 3 && lightningd"
+alias ajuda="clear && cat ~/.bash_aliases|cut -d"=" -f1"
+```
+
+72 - Para atualizar sem sair no prompt:
+```
+source ~/.bash_aliases
+```
+
+
+
 
 
