@@ -706,16 +706,16 @@ Haverá a saída abaixo:
 ```
 lsof -i -P -n | grep LISTEN
 ```
-A saída deverá ser: 
-> bitcoind   2023 nauru   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)
-> bitcoind   2023 nauru   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)
-> bitcoind   2023 nauru   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)
-> bitcoind   2023 nauru   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)
-> bitcoind   2023 nauru   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)
-> lightning  4305 nauru    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)
-> node      22244 nauru   28u  IPv6 171462      0t0  TCP *:3001 (LISTEN)
-> node      22244 nauru   29u  IPv6 171463      0t0  TCP *:4001 (LISTEN)
-> node      22900 nauru   25u  IPv6 173507      0t0  TCP *:3000 (LISTEN)
+A saída deverá ser: <br>
+`bitcoind   2023 nauru   11u  IPv6  22335      0t0  TCP [::1]:8332 (LISTEN)`<br>
+` bitcoind   2023 nauru   12u  IPv4  22337      0t0  TCP 127.0.0.1:8332 (LISTEN)`<br>
+` bitcoind   2023 nauru   26u  IPv4  22340      0t0  TCP 127.0.0.1:8334 (LISTEN)`<br>
+` bitcoind   2023 nauru   27u  IPv6  22341      0t0  TCP *:8333 (LISTEN)`<br>
+` bitcoind   2023 nauru   28u  IPv4  22342      0t0  TCP *:8333 (LISTEN)`<br>
+` lightning  4305 nauru    5u  IPv4  45563      0t0  TCP *:9735 (LISTEN)`<br>
+` node      22244 nauru   28u  IPv6 171462      0t0  TCP *:3001 (LISTEN)`<br>
+` node      22244 nauru   29u  IPv6 171463      0t0  TCP *:4001 (LISTEN)`<br>
+` node      22900 nauru   25u  IPv6 173507      0t0  TCP *:3000 (LISTEN)`<br>
 
 63 - Realize o acesso ao RTL localmente pela URL informada na saída ou então remotamente (pelo nome ou IP):
 ```
@@ -783,6 +783,68 @@ alias ajuda="clear && cat ~/.bash_aliases|cut -d"=" -f1"
 ```
 source ~/.bash_aliases
 ```
+
+73 - Colocando os seviços do REST e do RTL no systemd
+
+Criando o serviço do REST:
+
+```
+sudo nano /etc/systemd/system/REST.service 
+```
+
+Cole o conteúdo abaixo modificando o seu nome de usuário e demais caminhos:
+```
+# Dica tribotecno.org REST: systemd unit for REST
+# /etc/systemd/system/REST.service
+
+[Unit]
+Description=REST daemon
+
+[Service]
+ExecStart=/usr/bin/node /home/nauru/c-lightning-REST-0.10.7/cl-rest.js
+User=nauru
+Restart=always
+TimeoutSec=120
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Criando o serviço do RTL
+
+```
+sudo nano /etc/systemd/system/RTL.service
+```
+
+Cole o conteúdo abaixo modificando o seu nome de usuário e demais caminhos:
+
+```
+# Dica tribotecno.org  RTL: systemd unit for RTL
+# /etc/systemd/system/RTL.service
+
+[Unit]
+Description=RTL daemon
+Wants=REST.service
+After=REST.service
+
+[Service]
+ExecStart=/usr/bin/node /home/nauru/RTL-0.14.1/rtl
+User=nauru
+Restart=always
+TimeoutSec=120
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+```
+
+74 - Para iniciar os serviços dê os comandos:
+```
+sudo systemctl start REST
+sudo systemctl start RTL
+```
+
 
 
 
