@@ -732,7 +732,8 @@ Os seguintes procedimentos devem ser realizados
 
 65 - A seguinte linha deve ser adicionada no seu arquivo config alterando apropriadamente os seus apontamentos
 ```
-# backup wallet=sqlite3:///home/nauru/.lightning/bitcoin/lightningd.sqlite3:/media/pen128gb/backup/lightningd.sqlite3 
+# backup dos canais
+wallet=sqlite3:///home/nauru/.lightning/bitcoin/lightningd.sqlite3:/media/pen128gb/backup/lightningd.sqlite3 
 ```
 66 - Realize o restart do node
 
