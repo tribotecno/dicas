@@ -2,8 +2,8 @@
 #
 # Script para monitoramento da cotação feito pela Tribo Tecno
 #
-# Coloque no seu crontab a linha de chamada
-# */50 * * * * /home/nauru/check_price_mempool.sh 
+# Coloque no seu crontab (crontab -e) a linha de chamada do script
+# */50 * * * * /home/seuusuario/check_price_mempool.sh 
 # Para ver mais emoticon https://apps.timwhitlock.info/emoji/tables/unicode
 #
 #
