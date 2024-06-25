@@ -144,13 +144,119 @@ nano /var/www/your_domain/index.html
 http://server_domain_or_IP
 ```
 
-
+23 - Testando o processamento do PHP no Servidor Web
 ```
+nano /var/www/your_domain/info.php
+```
+Coloque o conteúdo abaixo no arquivo
+```
+<?php
+phpinfo();
 ```
 
+24 - Teste para ver se está funcionando
 ```
+http://server_domain_or_IP/info.php
 ```
 
+25 - Não é bom deixar esse arquivo na pasta. Remova para mais segurança
+```
+sudo rm /var/www/your_domain/info.php
+```
 
+26 - Testando a Conexão do MySQL com o PHP
+```
+sudo mysql
+```
+
+27 - Crie um database de teste
+```
+CREATE DATABASE example_database;
+```
+
+28 - Crie o usuário para acessar ao database
+```
+CREATE USER 'example_user'@'%' IDENTIFIED BY 'password';
+```
+
+29 - Conceda o privilégio de acesso
+```
+GRANT ALL ON example_database.* TO 'example_user'@'%';
+```
+
+Saia da conexão com
+```
+exit
+```
+
+30 - Vamos testar o acesso do usuário
+```
+mysql -u example_user -p
+```
+
+31 - Verifique se mostra o database
+```
+SHOW DATABASES;
+```
+
+32 - Vamos criar uma tabela todo_list
+```
+CREATE TABLE example_database.todo_list (
+  item_id INT AUTO_INCREMENT,
+  content VARCHAR(255),
+  PRIMARY KEY(item_id)
+);
+```
+
+33 - Vamos inserir alguns dados
+```
+INSERT INTO example_database.todo_list (content) VALUES ("My first important item");
+```
+Repita o comando acima variando o valor para ter mais dados de teste
+
+34 - Vamos verificar se os dados foram inseridos
+```
+SELECT * FROM example_database.todo_list;
+```
+
+35 - Após confirmado saida do banco
+```
+exit
+```
+
+36 - Vamos criar um acesso para listar os dados pelo PHP 
+```
+nano /var/www/your_domain/todo_list.php
+```
+Insira o código abaixo
+```
+<?php
+$user = "example_user";
+$password = "password";
+$database = "example_database";
+$table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+CRTL-X para salvar o arquivo
+
+37 - Vamos verificar se o código está funcionando
+```
+http://your_domain_or_IP/todo_list.php
+```
+
+38 - Vc pode habilitar o acesso ao seu servidor externamente assistindo esses videos do nosso canal
+https://youtu.be/joFMPgLL1iY - Configurando o Modem Router para redirecionar portas
+https://youtu.be/iTLnP9QjTQA - Usando um DNS dinamico para o seu site
 
 
