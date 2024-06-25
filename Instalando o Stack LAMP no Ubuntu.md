@@ -114,6 +114,7 @@ sudo a2ensite your_domain
 ```
 sudo apache2ctl configtest
 ```
+Caso apareça a mensagem de erro: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message corrija seu arquivo /etc/hosts como mostrado no vídeo.
 
 19 - Aplique as configurações no Apache
 ```
@@ -166,7 +167,7 @@ sudo rm /var/www/your_domain/info.php
 
 26 - Testando a Conexão do MySQL com o PHP
 ```
-sudo mysql
+sudo mysql -p
 ```
 
 27 - Crie um database de teste
