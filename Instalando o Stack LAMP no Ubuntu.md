@@ -257,7 +257,10 @@ http://your_domain_or_IP/todo_list.php
 ```
 
 38 - Vc pode habilitar o acesso ao seu servidor externamente assistindo esses videos do nosso canal
+
 https://youtu.be/joFMPgLL1iY - Configurando o Modem Router para redirecionar portas
+
 https://youtu.be/iTLnP9QjTQA - Usando um DNS dinamico para o seu site
+
 
 
