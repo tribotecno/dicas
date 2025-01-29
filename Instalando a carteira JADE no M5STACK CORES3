@@ -1,0 +1,13 @@
+# Instalando a Carteira Jade no Lilygo T-Display #
+Recomendamos usar esse tutorial com o vídeo ---
+0 - Verificar as dependencias em:
+https://github.com/Blockstream/Jade
+
+1 - Baixar o drive da placa
+https://www.wch-ic.com/downloads/CH343SER_ZIP.html
+
+2 - Instalar o Python 3.11 da loja da Microsoft
+https://apps.microsoft.com/detail/9NRWMJP3717K?hl=en-us&gl=US
+
+3 - Instalar o IDE para ESP32 (versã0 5.1.2)
+https://github.com/espressif/idf-installer/releases/tag/offline-5.1.2
