@@ -1,13 +1,14 @@
-# Instalando a Carteira Jade no Lilygo T-Display #
-Recomendamos usar esse tutorial com o vídeo ---
-0 - Verificar as dependencias em:
+# Instalando a Carteira Jade no dispositivo M5 STACK CORE S3 #
+Recomendamos usar esse tutorial com o vídeo do youtube
+
+1 - Verificar as dependencias em:
 https://github.com/Blockstream/Jade
-1 - 
+https://github.com/Blockstream/Jade?tab=readme-ov-file#set-up-the-environment
+ 
 2 - Instalar o Python 3.11 da loja da Microsoft
 https://apps.microsoft.com/detail/9NRWMJP3717K?hl=en-us&gl=US
 
-3 - Instalar o IDE para ESP32 (versã0 5.1.2)
-https://github.com/espressif/idf-installer/releases/tag/offline-5.1.2
+3 - Instalar o IDE para ESP32 (versã0 5.4)
 
 4 - Clonar o software da Jade no Windows dentro da pasta do IDE para ESP32
 Abra o prompt de comando que se encontra no desktop
@@ -16,10 +17,10 @@ git clone --recursive https://github.com/Blockstream/Jade.git
 ```
 5 - Vá para pasta "Jade"
 
-6 - Com Explorer copie da pasta config o arquivo sdkconfig_display_ttgo_tdisplay.defaults e coloque na pasta Jade. Renomeie o arquivo para sdkconfig.defaults
+6 - Com Explorer copie da pasta config o arquivo sdkconfig_display_m5staks3.defaults e coloque na pasta Jade. Renomeie o arquivo para sdkconfig.defaults
 
-7 - Com placa T-Display plugada no computador realize a instalação do programa
+7 - Com o M5 Stack plugado no computador realize a instalação do programa
 ```
 idf.py flash monitor
 ```
-8 - Após o termino o dispositivo reinicia ficando pronto para ser configurado
+8 - Após o termino o dispositivo reinicia ficando pronto para ser configurado.
