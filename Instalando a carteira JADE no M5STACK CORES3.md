@@ -1,6 +1,10 @@
 # Instalando a Carteira Jade no dispositivo M5 STACK CORE S3 #
 Recomendamos usar esse tutorial com o vídeo do youtube https://youtu.be/BpVk2lKNK_c
 
+Para adquirir o M5Stack Core S3 utilize o nosso link:
+
+https://s.click.aliexpress.com/e/_oE0ko8e
+
 Os passos abaixo são para o IDE versão 5.4. Como existe um atraso para atualizar os drivers do touch, utilize a versão 1.0.33
 
 1 - Verificar as dependencias em:
