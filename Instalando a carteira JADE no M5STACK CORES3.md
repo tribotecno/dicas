@@ -5,6 +5,7 @@ Os passos abaixo são para o IDE versão 5.4. Como existe um atraso para atualiz
 
 1 - Verificar as dependencias em:
 https://github.com/Blockstream/Jade
+
 https://github.com/Blockstream/Jade?tab=readme-ov-file#set-up-the-environment
  
 2 - Instalar o Python 3.11 da loja da Microsoft
