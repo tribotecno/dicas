@@ -34,6 +34,27 @@ Os passos abaixo são para utilizar a versão 5.3.1 do IDE enquanto não há a a
 2 - Desinstale a versão 5.4 e apague a pasta Jade se tiver clonado anteriormente
 
 3 - Baixar a versão espidf 5.3 em:
-'''
+```
 https://dl.espressif.com/dl/esp-idf/?idf=4.4
-'''
+```
+
+4 - Clonar o repositório da versão 1.0.33
+```
+git clone --branch 1.0.33 https://github.com/Blockstream/Jade.git
+```
+
+5 - Baixe os módulos dependentes
+```
+cd Jade
+git submodule update --init --recursive
+```
+
+6 - Com Explorer copie da pasta config o arquivo sdkconfig_display_m5staks3.defaults e coloque na pasta Jade. Renomeie o arquivo para sdkconfig.defaults
+
+7 - Com o M5 Stack plugado no computador realize a instalação do programa
+```
+idf.py flash monitor
+```
+
+8 - Após o termino o dispositivo reinicia ficando pronto para ser configurado.
+
