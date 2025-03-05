@@ -3,16 +3,14 @@ Recomendamos usar esse tutorial com o vídeo do youtube https://youtu.be/BpVk2lK
 
 Para adquirir o M5Stack Core S3 utilize o nosso link:
 
-<a href="https://s.click.aliexpress.com/e/_opvEKde" target="_blank" rel="noopener noreferrer">T-Display S3 Pro</a>
-
-[Open in New Window](https://s.click.aliexpress.com/e/_opvEKde)
+https://s.click.aliexpress.com/e/_opvEKde
 
 Os passos abaixo são para o IDE versão 5.4. Como existe um atraso para atualizar os drivers do touch, utilize a versão 1.0.33
 
 1 - Verificar as dependencias em:
-[Open in New Window](https://github.com/Blockstream/Jade)
+https://github.com/Blockstream/Jade
 
-[Open in New Window](https://github.com/Blockstream/Jade?tab=readme-ov-file#set-up-the-environment)
+https://github.com/Blockstream/Jade?tab=readme-ov-file#set-up-the-environment
  
 2 - Instalar o Python 3.11 da loja da Microsoft
 https://apps.microsoft.com/detail/9NRWMJP3717K?hl=en-us&gl=US
