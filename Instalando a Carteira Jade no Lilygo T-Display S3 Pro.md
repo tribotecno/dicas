@@ -1,5 +1,5 @@
 # Instalando a Carteira Jade no dispositivo T-DISPLAY S3 PRO #
-Recomendamos usar esse tutorial com o vídeo do youtube https://youtu.be/BpVk2lKNK_c
+Recomendamos usar esse tutorial com o vídeo do youtube [https://youtu.be/BpVk2lKNK_c](https://youtu.be/58P3VPmZobU)
 
 Para adquirir a T-DISPLAY S3 PRO utilize o nosso link:
 
