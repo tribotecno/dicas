@@ -21,7 +21,7 @@ https://mikrotik.com/download
 ```
 /interface ethernet set [ find default-name=ether1 ] comment="Porta VIVO" l2mtu=1598
 /interface ethernet set [ find default-name=ether2 ] comment="Porta PREDIALNET" l2mtu=1598 
-/interface ethernet set [ find default-name=ether5 ] advertise=100M-full,1000M-half,1000M-full,2500M-full,5000M-full,10000M-full comment="PortaINTERNA" l2mtu=1598 rx-flow-control=auto tx-flow-control=auto
+/interface ethernet set [ find default-name=ether5 ] comment="PortaINTERNA" l2mtu=1598 rx-flow-control=auto tx-flow-control=auto
 ```
 5 - Configurar as conexões PPOE (ajuste os logins de acordo com o seu provedor internet)
 ```
