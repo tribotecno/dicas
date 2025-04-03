@@ -7,7 +7,7 @@ https://s.click.aliexpress.com/e/_oDDbBMv
 
 https://s.click.aliexpress.com/e/_op1d70h
 
-Os passos abaixo são para a versão 7 do Mikrotik OS e com os modems dos provedores colocados em MODO BRIDGE
+Os passos abaixo são para a versão 6.49.18 do Mikrotik OS e com os modems dos provedores colocados em MODO BRIDGE
 
 1 - Realizar o reset do Routerboard
 
@@ -99,8 +99,7 @@ https://mikrotik.com/download
 /system clock set time-zone-name=America/Sao_Paulo
 /system identity set name=RBJG
 /system logging add topics=lte
-/system ntp client set enabled=yes
-/system ntp client set servers=200.160.0.8,200.189.40.8
+/system ntp client set enabled=yes primary-ntp=200.160.0.8 secondary-ntp=200.189.40.8
 /tool bandwidth-server set authenticate=no enabled=no
 /tool graphing interface add allow-address=192.168.1.0/24
 /tool graphing resource add allow-address=192.168.1.0/24
