@@ -99,7 +99,8 @@ https://mikrotik.com/download
 /system clock set time-zone-name=America/Sao_Paulo
 /system identity set name=RBJG
 /system logging add topics=lte
-/system ntp client set enabled=yes primary-ntp=200.160.0.8 secondary-ntp=200.189.40.8
+/system ntp client set enabled=yes
+/system ntp client set servers=200.160.0.8,200.189.40.8
 /tool bandwidth-server set authenticate=no enabled=no
 /tool graphing interface add allow-address=192.168.1.0/24
 /tool graphing resource add allow-address=192.168.1.0/24
