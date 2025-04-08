@@ -106,7 +106,7 @@ https://mikrotik.com/download
 ```
 17 - Realize os teste necessários de conexão como demonstrado no vídeo
 
-18 - Liberando um servidor Nextcloud para acesso Interno
+18 - Liberando um servidor pessoal Nextcloud para acesso da Internet
 
 Passo 1 - Liberar o acesso ao servidor na filtragem do firewall
 ```
@@ -136,6 +136,10 @@ Passo 3 - Cadastrar a exceção no roteamento para o servidor utilizar o mesmo I
 /ip route rule add comment="POOL0 via PREDIAL " src-address=192.168.1.0/26 table=TO_WANPREDIAL
 ```
 
+22 - Liberando o acesso aos gráficos de tráfego do Routerboard
+```
+/ip firewall filter add action=accept chain=input connection-state=new limit=100,5:packet log=yes protocol=tcp src-address=192.168.1.0/24 tcp-flags=syn
+```
 
 
 
