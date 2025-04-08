@@ -106,4 +106,38 @@ https://mikrotik.com/download
 ```
 17 - Realize os teste necessários de conexão como demonstrado no vídeo
 
+18 - Liberando um servidor Nextcloud para acesso Interno
+
+Passo 1 - Liberar o acesso ao servidor na filtragem do firewall
+```
+/ip firewall filter add action=accept chain=input comment="Libera XAVANTE" dst-address=192.168.1.33 in-interface=pppoe-predial log=yes protocol=tcp
+```
+Passo 2 - Cadastrar a regra do NAT para redirecionar a porta externa para a interna do servidor
+```
+/ip firewall nat add action=dst-nat chain=dstnat comment="Acesso ao Xavante Nextcloud SSL" dst-port=443 in-interface=pppoe-predial log=yes protocol=tcp to-addresses=192.168.1.33 to-ports=443
+```
+Passo 3 - Cadastrar a exceção no roteamento para o servidor utilizar o mesmo IP de entrada para a saída (teste as opções da diretiva action como explicado no vídeo)
+```
+/ip route rule add action=lookup-only-in-table comment="XAVANTE via PREDIAL" src-address=192.168.1.33/32 table=TO_WANPREDIAL
+```
+
+19 - Forçando um computador a sair apenas por um dos links (geralmente acesso ao bancos necessita essa configuração)
+```
+/ip route rule add comment="Deskwintribomaloca via vivo" src-address=192.168.1.107/32 table=TO_WANVIVO
+```
+
+20 - Forçando um computador a sair por um dos links para determinado IP
+```
+/ip route rule add comment="Nagios via PREDIAL para Servidor Externo" dst-address=199.200.100.201/32 src-address=192.168.1.35/32 table=TO_WANPREDIAL
+```
+
+21 - Forçando parte da rede a sair por um dos links
+```
+/ip route rule add comment="POOL0 via PREDIAL " src-address=192.168.1.0/26 table=TO_WANPREDIAL
+```
+
+
+
+
+
 
