@@ -1,5 +1,6 @@
 # Configurando um Routerboard Mikrotik para provedor multilink com failover e loadbalance #
-Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/-55BB12tuUM
+
+Recomendamos executar esse tutorial com os vídeos do youtube https://youtu.be/-55BB12tuUM e https://youtu.be/fYZ1haWzJ6o
 
 Para adquirir o Routerboard RB750GR3 utilize os nossos links:
 
