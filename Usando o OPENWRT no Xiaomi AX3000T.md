@@ -14,8 +14,16 @@ Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/ain
 
 6 - Abra um powershel como administrador e ative o ambiente do python 
 ```
+cd \
 python -m venv venv
 ```
+```
+Set-ExecutionPolicy RemoteSigned
+```
+```
+.\venv\Scripts\Activate.ps1
+```
+
 7 - Faça a clonagem do xamir-patcher
 ```
 cd \
