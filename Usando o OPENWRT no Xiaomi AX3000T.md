@@ -44,6 +44,14 @@ Passo 1 - Desligue o equipamento;
 
 Passo 2 - Retire o cabo de rede da porta WAN (porta ao lado do conector da fonte) e coloque em uma das 3 portas seguintes (estas seriam as portas da LAN);
 
-Passo 3 - Acesse pelo browser o endereço 192.168.1.1 e realize os passos de configuração do OpenWRT;
+Passo 3 - Acesse pelo browser o endereço 192.168.1.1 ;
+
+Passo 4 - Baixe a versão de Upgrade e realize o upload de atualização;
+```
+https://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/openwrt-24.10.0-mediatek-filogic-xiaomi_mi-router-ax3000t-squashfs-sysupgrade.bin
+```
+Passo 5 - Um reboot vai ser realizado e o equipamento irá estar pronto para inicio da configuração.
+
+
 
 
