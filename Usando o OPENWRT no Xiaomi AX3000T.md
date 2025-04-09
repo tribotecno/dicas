@@ -14,6 +14,7 @@ Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/ain
 
 6 - Abra um powershel como administrador e ative o ambiente do python 
 ```
+cd \
 python -m venv venv
 ```
 ```
@@ -25,7 +26,6 @@ Set-ExecutionPolicy RemoteSigned
 
 7 - Faça a clonagem do xamir-patcher
 ```
-cd \
 git clone --recursive https://github.com/openwrt-xiaomi/xmir-patcher
 ```
 8 - Realize o download da imagem para a pasta firmware do xmir-patcher
