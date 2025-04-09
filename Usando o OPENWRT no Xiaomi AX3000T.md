@@ -6,7 +6,7 @@ Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/ain
 
 2 - Mais informações podem ser obtidas na discussão do forum do OpenWRT neste link https://forum.openwrt.org/t/openwrt-support-for-xiaomi-ax3000t/180490
 
-3 - ATENÇÃO: PODER SER QUE O SEU ROTEADOR FIQUE BRICKED (INUTILIZADO) COMO OS PROCEDIMENTOS NESTE TUTORIAL. POR ISSO FAÇA POR SUA CONTA E RISCO!!!
+3 - ATENÇÃO: PODE SER QUE O SEU ROTEADOR FIQUE BRICKED (INUTILIZADO) COMO OS PROCEDIMENTOS NESTE TUTORIAL. POR ISSO FAÇA POR SUA CONTA E RISCO!!!
 
 4 - Faça o reset para as configurações de fábrica conforme demonstrado no vídeo
 
