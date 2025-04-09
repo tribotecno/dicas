@@ -25,4 +25,4 @@ git clone --recursive https://github.com/openwrt-xiaomi/xmir-patcher
 ```
 https://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/openwrt-24.10.0-mediatek-filogic-xiaomi_mi-router-ax3000t-initramfs-factory.ubi
 ```
-
+9 - Siga sequencia do menu do xmir-patcher
