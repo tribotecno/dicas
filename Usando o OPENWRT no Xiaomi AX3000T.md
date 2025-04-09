@@ -37,3 +37,9 @@ git clone --recursive https://github.com/openwrt-xiaomi/xmir-patcher
 https://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/openwrt-24.10.0-mediatek-filogic-xiaomi_mi-router-ax3000t-initramfs-factory.ubi
 ```
 10 - Siga sequencia do menu do xmir-patcher
+
+11 - Após a instalação do firmware do Openwrt realize os seguintes passos:
+Passo 1 - Desligue o equipamento;
+Passo 2 - Retire o cabo de rede da porta WAN (porta ao lado do conector da fonte) e coloque em uma das 3 portas seguintes (estas seriam as portas da LAN);
+Passo 3 - Acesse pelo browser o endereço 192.168.1.1 e realize os passos de configuração do OpenWRT;
+
