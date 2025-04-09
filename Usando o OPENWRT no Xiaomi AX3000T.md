@@ -12,7 +12,11 @@ Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/ain
 
 5 - Instale a versão do python no seu computador. No caso estamos usando o Windows 11 e instalaremos a versão 3.11 diretamente da loja da Microsoft
 
-6 - Abra um powershel como administrador e ative o ambiente do python 
+6 - Instale uma versão do GIT para baixar o repositório do xmir-patcher
+```
+https://git-scm.com/downloads/win
+```
+7 - Abra um powershel como administrador e ative o ambiente do python 
 ```
 cd \
 python -m venv venv
@@ -24,12 +28,12 @@ Set-ExecutionPolicy RemoteSigned
 .\venv\Scripts\Activate.ps1
 ```
 
-7 - Faça a clonagem do xamir-patcher
+8 - Faça a clonagem do xamir-patcher
 ```
 git clone --recursive https://github.com/openwrt-xiaomi/xmir-patcher
 ```
-8 - Realize o download da imagem para a pasta firmware do xmir-patcher
+9 - Realize o download da imagem para a pasta firmware do xmir-patcher
 ```
 https://downloads.openwrt.org/releases/24.10.0/targets/mediatek/filogic/openwrt-24.10.0-mediatek-filogic-xiaomi_mi-router-ax3000t-initramfs-factory.ubi
 ```
-9 - Siga sequencia do menu do xmir-patcher
+10 - Siga sequencia do menu do xmir-patcher
