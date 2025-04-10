@@ -1,6 +1,6 @@
 # Usando o OpenWRT para substituir o firmware no roteador Wifi Xiaomi AX3000T #
 
-Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/aindavoucolocar
+Recomendamos executar esse tutorial com o vídeo do youtube https://youtu.be/cFXNTJsiAs0
 
 1 - Verifique se o seu roteador Ax3000T atende os requisitos conforme o link https://openwrt.org/inbox/toh/xiaomi/ax3000t#hardware_support_status ou no seletor de firmware em https://toh.openwrt.org/?view=normal
 
