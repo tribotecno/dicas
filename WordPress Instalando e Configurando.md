@@ -1,4 +1,3 @@
-````markdown
 # 📘 Instalação do WordPress no Ubuntu Server
 
 Este guia mostra como instalar e configurar o **WordPress** em um servidor **Ubuntu (22.04/24.04)** utilizando **Apache, PHP e MariaDB**.  
@@ -159,7 +158,3 @@ Pronto! Agora você tem o **WordPress rodando no Ubuntu** 🎉
 
 ```
 
----
-
-Quer que eu já monte também um **`install_wordpress.sh`** para incluir no mesmo repositório e automatizar a instalação?
-```
