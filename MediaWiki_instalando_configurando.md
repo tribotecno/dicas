@@ -34,7 +34,15 @@ sudo systemctl restart apache2
 
 ---
 
-## 3️⃣ Criar banco de dados
+## 3️⃣ Instalar o MariaDB
+
+```bash
+sudo apt install mariadb-server mariadb-client -y
+sudo mysql_secure_installation
+```
+
+---
+##  Criar banco de dados
 
 Entre no MariaDB/MySQL:
 
