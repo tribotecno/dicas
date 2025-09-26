@@ -160,4 +160,3 @@ Agora você pode instalar **extensões e skins** para personalizar sua wiki.
 
 ---
 
-👉 Quer que eu já gere esse guia como um **arquivo `.md` pronto para download** para você subir direto no GitHub?
