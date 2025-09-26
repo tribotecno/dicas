@@ -21,7 +21,7 @@ sudo apt update && sudo apt upgrade -y
 Instale Apache, MariaDB/MySQL, PHP e extensões necessárias:
 
 ```bash
-sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql \
+sudo apt install apache2 php libapache2-mod-php php-mysql \
 php-intl php-xml php-mbstring php-apcu php-gd php-curl unzip wget -y
 ```
 
