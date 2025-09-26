@@ -1,5 +1,3 @@
----
-
 # 📘 Guia de Instalação do MediaWiki 1.40.0 no Ubuntu
 
 ## 🔧 Pré-requisitos
