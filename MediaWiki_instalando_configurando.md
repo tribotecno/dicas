@@ -62,13 +62,13 @@ EXIT;
 
 ---
 
-## 4️⃣ Baixar o MediaWiki 1.40.0
+## 4️⃣ Baixar o MediaWiki 1.44.0
 
 ```bash
 cd /tmp
-wget https://releases.wikimedia.org/mediawiki/1.40/mediawiki-1.40.0.tar.gz
-tar -xvzf mediawiki-1.40.0.tar.gz
-sudo mv mediawiki-1.40.0 /var/www/html/mediawiki
+wget https://releases.wikimedia.org/mediawiki/1.44/mediawiki-1.44.0.tar.gz
+tar -xvzf mediawiki-1.44.0.tar.gz
+sudo mv mediawiki-1.44.0 /var/www/html/mediawiki
 ```
 
 ---
