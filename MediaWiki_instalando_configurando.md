@@ -150,6 +150,7 @@ Se possuir domínio configurado:
 sudo apt install certbot python3-certbot-apache -y
 sudo certbot --apache -d sua-wiki.com
 ```
+Script de backup. Faça as modificações de acordo com sua configuração
 ```bash
 #!/bin/bash
 
