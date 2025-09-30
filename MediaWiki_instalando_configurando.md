@@ -142,7 +142,7 @@ Mova o arquivo para:
 
 ---
 
-## 8️⃣ (Opcional) Ativar HTTPS
+## 8️⃣ (Opcional) Ativar HTTPS e Script de Backup
 
 Se possuir domínio configurado:
 
@@ -150,7 +150,33 @@ Se possuir domínio configurado:
 sudo apt install certbot python3-certbot-apache -y
 sudo certbot --apache -d sua-wiki.com
 ```
+```bash
+#!/bin/bash
 
+# Configuração
+DATA=$(date +"%Y-%m-%d_%H%M")
+WIKI_DIR="/caminho/para/mediawiki"
+BACKUP_DIR="/caminho/para/armazenar/backups"
+DB_NAME="nomedobanco"
+DB_USER="usuario"
+DB_PASS="senha"
+
+# Diretórios e nomes dos arquivos
+ARQUIVO_WIKI="$BACKUP_DIR/wiki_files_$DATA.tar.gz"
+ARQUIVO_DB="$BACKUP_DIR/wiki_db_$DATA.sql"
+ARQUIVO_DB_GZ="$ARQUIVO_DB.gz"
+
+# Backup dos arquivos
+tar -czf "$ARQUIVO_WIKI" -C "$WIKI_DIR" .
+
+# Backup do banco de dados
+mysqldump -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" > "$ARQUIVO_DB"
+gzip "$ARQUIVO_DB"
+
+echo "Backup concluído:"
+echo "Arquivos: $ARQUIVO_WIKI"
+echo "Banco: $ARQUIVO_DB_GZ"
+```
 ---
 
 ## ✅ Conclusão
