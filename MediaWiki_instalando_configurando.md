@@ -182,7 +182,7 @@ echo "Banco: $ARQUIVO_DB_GZ"
 
 ## ✅ Conclusão
 
-Seu **MediaWiki 1.40.0 (LTS)** está instalado e pronto para uso! 🎉
+Seu **MediaWiki 1.44.0 ** está instalado e pronto para uso! 🎉
 Agora você pode instalar **extensões e skins** para personalizar sua wiki.
 
 ---
