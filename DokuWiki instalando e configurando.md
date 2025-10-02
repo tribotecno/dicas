@@ -149,6 +149,27 @@ sudo rm /var/www/html/dokuwiki/install.php
 
 ---
 
+## 🛡️ Passo 12 – Realizando o backup das informações
+
+```bash
+sudo systemctl stop apache2
+sudo tar -czvf dokuwiki-backup-$(date +%F).tar.gz \
+    /var/www/html/dokuwiki/data \
+    /var/www/html/dokuwiki/conf \
+    /var/www/html/dokuwiki/lib/plugins \
+    /var/www/html/dokuwiki/lib/tpl
+sudo systemctl start apache2
+```
+Automatizando com o crontab
+```bash
+sudo crontab -e
+```
+Insira a linha abaixo
+```bash
+0 2 * * * tar -czf /opt/backups/dokuwiki-$(date +\%F).tar.gz /var/www/html/dokuwiki/data /var/www/html/dokuwiki/conf /var/www/html/dokuwiki/lib/plugins /var/www/html/dokuwiki/lib/tpl
+```
+---
+
 ## ✅ Conclusão
 
 Agora seu **DokuWiki** está instalado no **Ubuntu Server**, protegido por **UFW** e com **SSL gratuito (Let's Encrypt)**.
