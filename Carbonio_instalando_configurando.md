@@ -66,10 +66,18 @@ sudo apt install carbonio-ce -y
 
 ## 🔧 Passo 4 — Configuração inicial (Bootstrap)
 
-✅ Importante:  Antes de rodar comando abaixo seu DNS deve estar configurado com os registros MX, nome do servidor apontando para o servidor e configuraçao do IP reverso apontando para o nome do servidor.
+✅ Importante:  Antes de rodar o comando abaixo seu DNS deve estar configurado com o registro MX, nome do servidor apontando para o IP e configuração do IP reverso apontando para o nome do servidor.
 
 ```bash
 sudo carbonio-bootstrap
+```
+Informe as configurações de IP e senha do Mesh
+```bash
+sudo service-discover setup-wizard
+```
+Finalize as configurações pendentes
+```bash
+sudo pending-setups -a
 ```
 
 👉 Durante o processo:
