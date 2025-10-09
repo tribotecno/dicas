@@ -79,6 +79,16 @@ Finalize as configurações pendentes
 ```bash
 sudo pending-setups -a
 ```
+Crie a conta do administrador com a senha desejada
+```bash
+sudo su - zextras
+```
+```bash
+zmprov ca admin@tutorial.tribotecno.org minhasenhaforte10 zimbraIsAdminAccount TRUE
+```
+```bash
+exit
+```
 
 👉 Durante o processo:
 
