@@ -109,6 +109,7 @@ sudo ufw allow 143/tcp   # IMAP
 sudo ufw allow 993/tcp   # IMAPS
 sudo ufw allow 80/tcp    # HTTP
 sudo ufw allow 443/tcp   # HTTPS
+# Recomendamos que a porta 6071 seja aberta apenas para a VPN
 sudo ufw allow 6071/tcp  # Admin Console
 ```
 
