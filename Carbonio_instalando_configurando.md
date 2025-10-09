@@ -66,6 +66,8 @@ sudo apt install carbonio-ce -y
 
 ## 🔧 Passo 4 — Configuração inicial (Bootstrap)
 
+✅ Importante:  Antes de rodar comando abaixo seu DNS deve estar configurado com os registros MX, nome do servidor apontando para o servidor e configuraçao do IP reverso apontando para o nome do servidor.
+
 ```bash
 sudo carbonio-bootstrap
 ```
