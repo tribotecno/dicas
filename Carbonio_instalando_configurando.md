@@ -115,6 +115,19 @@ sudo ufw allow 6071/tcp  # Admin Console
 ---
 
 ## 🔒 Passo 6 — Configurar SSL com Let's Encrypt
+Na interface gráfica do Navegador na parte de administração 
+Ir para virtual host e certificados
+Criar o alias para o virtualhost (pode ser o mesmo nome)
+Dar um reboot no servidor
+Retornar da interface grafica
+Clicar em verificar certificado
+Na próxima janela clicar em GERAR CERTIFICADO
+Confira se o certificado foi gerado corretamenta verificando a mensagem enviada para o usuário zextras
+Dar novamente o reboot no servidor
+Fechar os navegadores para limpar o cache
+Acessar novamente e verificar se o certificado foi carregado corretamente.
+
+
 
 ```bash
 # Instalar certbot
