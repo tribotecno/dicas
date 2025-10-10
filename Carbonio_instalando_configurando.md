@@ -114,45 +114,7 @@ sudo ufw allow 6071/tcp  # Admin Console
 ```
 
 ---
-
-## 🔒 Passo 6 — Configurar SSL com Let's Encrypt
-Na interface gráfica do Navegador na parte de administração 
-Ir para virtual host e certificados
-Criar o alias para o virtualhost (pode ser o mesmo nome)
-Dar um reboot no servidor
-Retornar da interface grafica
-Clicar em verificar certificado
-Na próxima janela clicar em GERAR CERTIFICADO
-Confira se o certificado foi gerado corretamenta verificando a mensagem enviada para o usuário zextras
-Dar novamente o reboot no servidor
-Fechar os navegadores para limpar o cache
-Acessar novamente e verificar se o certificado foi carregado corretamente.
-
-
-
-```bash
-# Instalar certbot
-sudo apt install certbot -y
-
-# Gerar certificado
-sudo certbot certonly --standalone -d mail.seudominio.com
-```
-
-👉 Copie e aplique os certificados no Carbonio:
-
-```bash
-sudo zmcertmgr verifycrt comm \
-  /etc/letsencrypt/live/mail.seudominio.com/privkey.pem \
-  /etc/letsencrypt/live/mail.seudominio.com/fullchain.pem
-
-sudo zmcertmgr deploycrt comm \
-  /etc/letsencrypt/live/mail.seudominio.com/cert.pem \
-  /etc/letsencrypt/live/mail.seudominio.com/chain.pem
-```
-
----
-
-## 🌍 Passo 7 — Acessar interfaces web
+## 🌍 Passo 6 — Acessar interfaces web
 
 | Interface        | URL de acesso                                                        |
 | ---------------- | -------------------------------------------------------------------- |
@@ -160,6 +122,41 @@ sudo zmcertmgr deploycrt comm \
 | ⚙️ Admin Console | [https://mail.seudominio.com:6071](https://mail.seudominio.com:6071) |
 
 ---
+## 🔒 Passo 7 — Configurar SSL com Let's Encrypt
+
+Na interface gráfica do Navegador na parte de administração 
+
+Ir para virtual host e certificados
+
+Criar o alias para o virtualhost (pode ser o mesmo nome do servidor)
+
+Acesse o serivdor pelo terminal SSH e ative o proxy:
+```bash
+sudo su - zextras
+carbonio prov ms $(zmhostname) zimbraReverseProxyMailMode ""
+/opt/zextras/libexec/zmproxyconfgen
+exit
+```
+
+Dar um reboot no servidor
+
+Retornar da interface grafica
+
+No mesmo local de virtual host e certificados, clicar em verificar certificado
+
+Na próxima janela clicar em GERAR CERTIFICADO
+
+Confira se o certificado foi gerado corretamenta verificando a mensagem enviada para o usuário zextras (acesse a conta deste admin e clique em visualizar email)
+
+Dar novamente o reboot no servidor
+
+Fechar os navegadores para limpar o cache
+
+Acessar novamente e verificar se o certificado foi carregado corretamente
+
+---
+
+
 ## 🌍 Passo 8 — Configure o SPF - DKIM - DMARC
 Insira no seu DNS as entradas TXT para:
 
@@ -168,33 +165,48 @@ v=spf1 mx include:carbonio.tutorial.tribotecno.org -all
 
 DKIM
 Gere o DKIM para o seu dominio no carbonio:
-zmdkimkeyutil -a -d tutorial.tribotecno.org
 
- /opt/zextras/libexec/zmdkimkeyutil -a -d tutorial.tribotecno.org
+```bash
+sudo su - zextras
+/opt/zextras/libexec/zmdkimkeyutil -a -d tutorial.tribotecno.org
+```
+
+A saída será parecida com a info abaixo:
+
+```
+
 DKIM Data added to LDAP for domain tutorial.tribotecno.org with selector A175636E-A53E-11F0-B115-6CD0D3453A97
 Public signature to enter into DNS:
 A175636E-A53E-11F0-B115-6CD0D3453A97._domainkey IN      TXT     ( "v=DKIM1; k=rsa; "
           "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA9IhCO7k8Hj0Ima5ponYCwLSH/eyALa9RngMtUkH8RFZmcnr1BqQ/g2IHjT7VEKvB8tdw2YfnRKEf5jxlxhsuYtqw5CxtbZ9vxnOI8TaBkI0Exv8UaalU7JgokhJbbGW9jaOMJm6diYREYahEZWEhI1AppNe11ny3Q7lpXZ1/CIFeziM5nPYApXLNN5eZ4w/qxgWN1GjHZdvMTI"
           "RZRncOKaEq8HS8h0V0uWFwWdCevLd/6OoWysZnPaYMFJYXAOn8VeVHvgCqgFQMjLF9lAZNeVYPGtjYSofnFJ1uw4PMqnbG89Ns7oIrNYZoZTCbOktfF1v3Qj3y+YJ6YR4DzbJUQwIDAQAB" )  ; ----- DKIM key A175636E-A53E-11F0-B115-6CD0D3453A97 for tutorial.tribotecno.org
+```
 
 Depois de carregar no seu DNS faça o teste com comando abaixo de outro máquina:
-nslookup -type=txt a175636e-a53e-11f0-b115-6cd0d3453a97._domainkey.tutorial.tribotecno.org
 
-Veifique se o DKIM está habilitado no carbonio
+```bash
+nslookup -type=txt a175636e-a53e-11f0-b115-6cd0d3453a97._domainkey.tutorial.tribotecno.org
+```
+
+```
+
+Verifique se o DKIM está habilitado no carbonio
 sudo su - zextras
 carbonio prov gs $(zmhostname)|grep -i opendkim
+```
 
 Criar o registro DMARC no DNS
+
 Name: _dmarc.tutorial.tribotecno.org
 Type: TXT
 Value: "v=DMARC1; p=none; rua=mailto:dmarc@tutorial.tribotecno.org; pct=100; sp=none"
 
 Atenção:
 p=none → apenas monitoramento (recomendado nas primeiras semanas).
+
 Depois de validar relatórios, evolua para p=quarantine e, quando seguro, para p=reject.
+
 rua é o endereço para receber relatórios agregados (XML). Crie essa mailbox antes de apontar para ela.
-
-
 
 
 
