@@ -6,6 +6,8 @@ Este guia mostra como instalar e configurar o **DokuWiki** em um **Ubuntu Server
 - Firewall (UFW)  
 - Certificado SSL gratuito com **Let's Encrypt (Certbot)**  
 
+O vídeo de demonstração pode ser acessado aqui: https://youtu.be/u3Ytp3VWT44
+
 ---
 
 ## 🚀 Passo 1 – Atualizar o sistema
