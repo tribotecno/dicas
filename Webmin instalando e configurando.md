@@ -10,6 +10,8 @@ O **Webmin** é um painel de administração baseado na web que facilita a confi
 
 Com ele, você pode gerenciar o servidor direto do navegador, de forma simples e prática.  
 
+O vídeo com a demonstração de passo a passo pode ser acessado aqui: https://youtu.be/aw2YOgZ92eM
+
 ---
 
 ## ⚡ Pré-requisitos
