@@ -1,5 +1,7 @@
 # 📘 Guia de Instalação do MediaWiki 1.40.0 no Ubuntu
 
+O vídeo com o passo a passo pode ser acessado aqui: https://youtu.be/B_qStsyhcp0
+
 ## 🔧 Pré-requisitos
 
 * Servidor rodando **Ubuntu 20.04/22.04/24.04**
